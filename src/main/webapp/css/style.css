@@ -1,0 +1,277 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700;800&family=Playwrite+DK+Loopet:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
+body {
+    background-color: rgb(164, 187, 176);
+    text-align: center;
+    font-family:'Lato','M PLUS Rounded 1c', sans-serif;
+}
+
+.breadcrumb {
+    background-color: #e3e7eb; /* 背景色 */
+    font-size: 1rem; /* フォントサイズ */
+    margin-top: 2rem;
+    padding: 0.5rem 4rem; /* 内側の余白 */
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+  }
+
+.breadcrumb-item a {
+    text-decoration: none; /* 下線を消す */
+    color: #118a23; /* リンクの色 */
+  }
+.breadcrumb-item.active {
+    color: #6c757d; /* 現在ページの色 */
+  }
+
+
+main {
+    background: #dde0e2dc;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-family:'Lato','M PLUS Rounded 1c', sans-serif;
+}
+
+main.container {
+    width: 90%;
+    background-color: #f9f9f9d3;
+    padding-top: 10px;
+    border-radius: 5px;
+
+}
+
+/* 見出し */
+h1 {
+    margin: 0;
+    padding-top: 50px;
+    font-weight: normal;
+    color: rgb(87, 88, 84);
+    font-size: 50px;
+    color: #fff; /* リリーフ */
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6)
+}
+
+h2 {
+    font-weight: bold;
+    color: rgb(115, 141, 100);
+    font-size: 25px;
+    margin: 40px 0 30px;
+}
+
+h3 {
+    font-weight: bold;
+    color: rgb(88, 95, 75);
+    font-size: 30px;
+    border: 3px solid #3f3b3b2a;
+    padding: 10px;
+    margin-top: 80px;
+    border-radius: 5px;
+}
+
+h4 {
+    color: #fff;
+    font-size: 30px;
+}
+
+
+h5 {
+    font-weight: bold;
+    color: #5e6461;
+    width: 200px;
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 30px;
+    font-weight: normal;
+    padding-top: 80px;
+    color: #61645b; /* ドロップシャドウ */
+    text-shadow: 3px 3px 5px rgba(14, 51, 29, 0.5)
+}
+
+p {
+    font-weight: bold;
+    color: rgb(128, 125, 122);
+    margin: 10px 0;
+  }
+
+ul li {
+    list-style-type: none;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: rgb(138, 133, 127);
+}
+
+/* レイアウト */
+.flex-container {
+    display: flex;
+    justify-content:  space-evenly;
+    align-items: center;
+    border: 3px solid #f9f9f9f8;
+    padding: 10px;
+    margin: 30px;
+}
+
+/* スライド画像スタイル */
+.rounded {
+    border-radius: 15px;
+    width: 200px;
+    height: auto;
+}
+
+/* 矢印スタイル */
+.dli-chevron-down {
+    margin: 30px; /* スライド*/
+    display: inline-block;
+    vertical-align: middle;
+    color: #666363;
+    line-height: 1;
+    width: 0;  /* 矢印の幅 */
+    height: 0; /* 矢印の高さ */
+    border: 0.1em solid transparent; /* 矢印の透明な部分 */
+    border: 0.1em solid currentColor; /* 矢印の色を設定 */
+    box-sizing: border-box;
+    transform: translateY(-25%) ; /* rotate(135deg) 回転して矢印方向を設定 */
+  }
+
+.circle {
+    display: inline-block;
+    width: 180px; /* 円の幅 */
+    height: 180px; /* 円の高さ */
+    border-radius: 50%; /* 丸くするための設定 */
+    background: rgb(225, 226, 226); /* 円の背景色 */
+    margin: 0px; /* 間隔 */
+    line-height: 190px; /* 文字の位置 */
+    font-family: 'M PLUS Rounded 1c', sans-serif;/* フォント */
+    border: none;
+    text-decoration: none;  /* 罫線を消す */
+    text-align: center; /* 文字をセンターに */
+    justify-content: center; /* 横方向の中央揃え */
+    align-items: center; /* 縦方向の中央揃え */
+    color: rgb(101, 110, 85); /* 文字色 */
+    font-weight: bold; /* 文字の太さ */
+    font-size: 25px; /* フォントサイズ */
+}
+
+.col {
+	max-width: 600px;
+	min-width: 220px;
+	min-height: 100px;
+	margin:  auto;
+	padding: 20px 20px;
+    list-style-type: none;
+}
+dl {
+    margin-bottom: 0;
+}
+
+dd {
+    font-weight: 0;
+    padding-top: 20px;
+    padding-bottom: 0;
+    font-size: 15px;
+    color: rgb(143, 138, 131);
+}
+
+.img-fluid {
+    padding-top: 60px;
+}
+
+
+.list-bordered {
+    font-weight: bold;
+    font-size: 25px;
+    color: #21251cb0;
+    width: 500px;
+    margin-left: 30px;
+    padding: 0;
+}
+
+table{
+    margin-left: 70px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white; /* テキスト色 */
+  }
+
+span {
+    color: white;
+    font-size: 30px;
+    content: 120px;
+}
+
+.input-group {
+    width: 73%;
+    padding-left: 27%;
+    color: rgb(143, 138, 131);
+ }
+
+
+/* grow.html */
+.pagination {
+   margin-left: 5%;
+}
+
+/* grow.html */
+.table {
+    width: 90%;
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap; /* 折り返しを可能にする */
+    gap: 10px; /* 画像間のスペース */
+    justify-content: center; /* コンテンツを中央揃え */
+}
+.photo-gallery img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+.photo-gallery img:hover {
+    transform: scale(2.1); /* ホバー時に拡大 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+}
+
+.card {
+    margin: 50px auto; /* 上下にマージンを追加 */
+    max-width: 600px; /* 幅を調整 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して見栄えを向上 */
+    border-radius: 10px; /* 角を丸める */
+}
+
+.card {
+    max-width: 500px; /* カードの幅を小さくする */
+    margin: 20px auto; /* カードを中央に配置 */
+    padding: 10px; /* カード内の余白を小さくする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    border-radius: 10px; /* 角を丸める */
+    font-size: 14px; /* フォントサイズを小さくする */
+}
+.card img {
+    max-height: 500px; /* 画像の高さを制限 */
+    object-fit: cover; /* 画像を枠内に収める */
+    border-radius: 8px; /* 画像の角も丸める */
+}
+.card h5 {
+    font-size: 16px; /* タイトルを小さくする */
+
+}
+.card ul li {
+    font-size: 12px; /* リストの文字サイズを調整 */
+}
+
+.col-md-6{
+    margin-top: 100px;
+}
+
