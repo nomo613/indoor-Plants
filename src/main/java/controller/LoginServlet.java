@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 			    adminDao.findByLoginIdAndLoginPass(loginId, loginPass);
 			if (admin != null) {
 				req.getSession().setAttribute("loginId",admin.getLoginId());
+				resp.sendRedirect("plantsList");
 			} else {
 				req.setAttribute("error", true);
 				req.getRequestDispatcher("/WEB-INF/view/login.jsp")

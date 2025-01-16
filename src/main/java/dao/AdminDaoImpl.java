@@ -55,13 +55,21 @@ public class AdminDaoImpl implements AdminDao {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, loginId);
 			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				if (BCrypt.checkpw(loginPass, rs.getString("login_pass"))) {
-					admin = mapToAdmin(rs);
-				}
-			}
-		} catch (Exception e) {
-			throw e;
+			  if (rs.next()) {
+		            String hashedPassword = rs.getString("login_pass");
+		            System.out.println("データベースから取得したハッシュ値: " + hashedPassword);
+		            if (BCrypt.checkpw(loginPass, hashedPassword)) {
+		                System.out.println("パスワード一致");
+		                admin = mapToAdmin(rs);
+		            } else {
+		                System.out.println("パスワード不一致");
+		            }
+		        } else {
+		            System.out.println("指定されたログインIDが見つかりません: " + loginId);
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        throw e;
 		}
 		return admin;
 	}

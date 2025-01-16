@@ -153,6 +153,12 @@ ul li {
     color: rgb(101, 110, 85); /* 文字色 */
     font-weight: bold; /* 文字の太さ */
     font-size: 25px; /* フォントサイズ */
+    
+  animation: blinkAnime 1s infinite alternate;
+}
+@keyframes blinkAnime{
+   0% { color: rgba(80, 81, 9, 0.91) }
+ 100% { color: rgba(168, 193, 120, 0.91) }
 }
 
 .col {
@@ -272,6 +278,14 @@ span {
 }
 
 .col-md-6{
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
+/* login */
+	.custom-error {
+    color: rgb(128, 49, 45); /* 文字色 */
+    background-color: rgb(184, 184, 114); /* 背景色 */
+    border: 1px solid rgb(137, 71, 73); /* 境界線  */
+    padding: 10px; /* 余白  */
+    border-radius: 5px; /* 角丸  */
+}
