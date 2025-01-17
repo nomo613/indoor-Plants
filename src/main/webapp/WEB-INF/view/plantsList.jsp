@@ -9,6 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>PLANTS LIST</title>
+    <%-- メッセージがセッションに格納されていれば表示 --%>
+<c:if test="${not empty sessionScope.message}">
+    <div class="alert alert-success">${sessionScope.message}</div>
+    <c:remove var="message" scope="session"/>
+</c:if>
 </head>
 <body>
   <h2>PLANTS LIST</h2>
@@ -16,6 +21,7 @@
 <div style="text-align: right; margin-right: 200px;　color: #808080">
   <button type="button" class="btn btn-outline-dark" onclick="location.href='logout'">ログアウト</button>
 </div>
+
  <div class="container">
   <div class="row">
     <!-- カード1 -->
