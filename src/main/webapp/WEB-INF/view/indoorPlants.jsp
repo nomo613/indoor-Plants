@@ -137,7 +137,7 @@
           <h3>強  い</h3>
               <div class="flex-container">
                   <h5>フランスゴム</h5>
-                  <img src="images/A-1.jpg" class="rounded" alt="Sample Image">
+                  <img src="images/FUR-01.jpg" class="rounded" alt="Sample Image">
                   <ul class="list-bordered">
                     <p>光沢のある厚い葉が特徴の樹木</p>
                      <li>&lt;point&gt;</li>
@@ -148,7 +148,7 @@
               </div>
               <div class="flex-container">
                   <h5>サボテン</h5>
-                  <img src="images/A-2.jpg" class="rounded" alt="Sample Image">
+                  <img src="images/SAN-02.jpg" class="rounded" alt="Sample Image">
                   <ul class="list-bordered">
                     <p>乾燥地帯原産で、<br>葉が針に変化しているのが特徴</p>
                     <li>&lt;point&gt;</li>
@@ -161,7 +161,7 @@
               </div>
               <div class="flex-container">
                   <h5>フィロデンドロン</h5>
-                  <img src="images/A-3.jpg" class="rounded" alt="Sample Image">
+                  <img src="images/FIR-03.jpg" class="rounded" alt="Sample Image">
                   <ul class="list-bordered">
                     <p>トロピカルな雰囲気を持つ<br>つる性または直立性の植物</p>
                     <li>&lt;point&gt;</li>
@@ -178,7 +178,7 @@
           <h3>大 き さ</h3>
                 <div class="flex-container">
                      <h5>モンステラ<br> (180-200cm)</h5>
-                      <img src="images/B-1.jpg" class="rounded " alt="Sample Image">
+                      <img src="images/MON-04R.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>大きな葉に穴が開くユニークな姿が特徴</p>
                         <li>&lt;point&gt;</li>
@@ -191,7 +191,7 @@
                 </div>
                 <div class="flex-container">
                       <h5>モンステラ <br>(約100cm)</h5>
-                      <img src="images/B-2.jpg" class="rounded " alt="Sample Image">
+                      <img src="images/MON-05N.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>大きな葉に穴が開くユニークな姿が特徴</p>
                         <li>&lt;point&gt;</li>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="flex-container">
                       <h5 class="mons">モンステラ <br>(20-30cm)</h5>
-                      <img src="images/B-3.jpg" class="rounded " alt="Sample Image">
+                      <img src="images/MON-06S.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>大きな葉に穴が開くユニークな姿が特徴</p>
                         <li>&lt;point&gt;</li>
@@ -219,7 +219,7 @@
           <h3>お す す め</h3>
                 <div class="flex-container">
                        <h5>カポック</h5>
-                       <img src="images/C-1.jpg" class="rounded " alt="Sample Image">
+                       <img src="images/KAP-07.jpg" class="rounded " alt="Sample Image">
                        <ul class="list-bordered">
                         <p>小さな丸い葉が広がる姿が特徴</p>
                         <li>&lt;point&gt;</li>
@@ -231,7 +231,7 @@
                 </div>
                 <div class="flex-container">
                       <h5>パキラ</h5>
-                      <img src="images/C-2.jpg" class="rounded " alt="Sample Image">
+                      <img src="images/PAK-08.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>手のひらのような形の葉が特徴で、<br>幸運を呼ぶ植物として人気</p>
                         <li>&lt;point&gt;</li>
@@ -243,7 +243,7 @@
                 </div>
                 <div class="flex-container">
                       <h5>サンスベリア</h5>
-                      <img src="images/C-3.jpg" class="rounded " alt="Sample Image">
+                      <img src="imagesSAN-09.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>細長い剣のような葉が特徴で、<br>空気清浄効果があると言われる</p>
                         <li>&lt;point&gt;</li>
