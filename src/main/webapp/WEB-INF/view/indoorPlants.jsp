@@ -148,7 +148,7 @@
               </div>
               <div class="flex-container">
                   <h5>サボテン</h5>
-                  <img src="images/SAN-02.jpg" class="rounded" alt="Sample Image">
+                  <img src="images/SAB-02.jpg" class="rounded" alt="Sample Image">
                   <ul class="list-bordered">
                     <p>乾燥地帯原産で、<br>葉が針に変化しているのが特徴</p>
                     <li>&lt;point&gt;</li>
@@ -156,7 +156,7 @@
                     <li>水やりは控えめで、土が完全に乾いてから。</li>
                     <li>冬は水を控えて！休眠期にはいります。</li>
                  </ul>
-                 <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList?plant_id=2'">新規登録</button>
+                 <button type="button" class="btn btn-outline-success"onclick="location.href='plantsList?plant_id=2'">新規登録</button>
                 </div>
               </div>
               <div class="flex-container">
@@ -243,7 +243,7 @@
                 </div>
                 <div class="flex-container">
                       <h5>サンスベリア</h5>
-                      <img src="imagesSAN-09.jpg" class="rounded " alt="Sample Image">
+                      <img src="images/SAN-09.jpg" class="rounded " alt="Sample Image">
                       <ul class="list-bordered">
                         <p>細長い剣のような葉が特徴で、<br>空気清浄効果があると言われる</p>
                         <li>&lt;point&gt;</li>
