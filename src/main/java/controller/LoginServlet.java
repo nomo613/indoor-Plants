@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			//ログイン情報の取得//
 			String loginId = req.getParameter("loginId");
-			String loginPass = req.getParameter("loginPass");
+			String loginPass = req.getParameter("loginPass");		
 
 			//データベースの操作//
 			AdminDao adminDao = DaoFactory.createAdminDao();
@@ -35,6 +35,8 @@ public class LoginServlet extends HttpServlet {
 			    adminDao.findByLoginIdAndLoginPass(loginId, loginPass);
 			if (admin != null) {
 				req.getSession().setAttribute("loginId",admin.getLoginId());
+				 resp.sendRedirect("plantsList"); // 次の画面へリダイレクト
+				 return;
 			} else {
 				req.setAttribute("error", true);
 				req.getRequestDispatcher("/WEB-INF/view/login.jsp")
