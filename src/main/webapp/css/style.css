@@ -153,6 +153,18 @@ ul li {
     color: rgb(101, 110, 85); /* 文字色 */
     font-weight: bold; /* 文字の太さ */
     font-size: 25px; /* フォントサイズ */
+    animation: border 1s ease infinite alternate;
+}
+
+@keyframes border {
+  0% {
+      border: medium solid rgb(225, 226, 226);
+   color:rgb(157, 134, 79);
+  }
+  100% {
+     border: medium solid #efefef;
+    color:#666363;
+  }
 }
 
 .col {
