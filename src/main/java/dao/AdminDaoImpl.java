@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import domain.Admin;
+import dto.Admin;
 
 
 public class AdminDaoImpl implements AdminDao {

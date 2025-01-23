@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.PlantsListDao;
 import dao.PlantsListDaoImpl;
-import domain.Plant;
+import dto.Plant;
 
 
 @WebServlet("/plantsList")
@@ -41,7 +41,7 @@ public class PlantsListServlet extends HttpServlet {
 	    String plantName = req.getParameter("name");
 	    String plantType = req.getParameter("type");
 	    
-	    Plant newPlant = new Plant();
+	    Plant newPlant = new Plants();
 	    newPlant.setName(plantName);
 	    newPlant.setType(plantType);
 
@@ -49,7 +49,7 @@ public class PlantsListServlet extends HttpServlet {
 	    try {
 	        dao.insert(newPlant); // 新しい植物データを挿入
 	        req.getSession().setAttribute("message", "新しい植物を登録しました！");
-	        resp.sendRedirect("plantsList"); // データ挿入後にリストページにリダイレクト
+	        resp.sendRedirect("growth"); // データ挿入後にリストページにリダイレクト
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        req.setAttribute("error", "データの追加に失敗しました。");

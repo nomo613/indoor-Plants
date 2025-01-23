@@ -1,4 +1,7 @@
-<!doctype html>
+<%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +13,7 @@
         body {
             background-color: rgb(164, 187, 177);
             text-align: center;
-            font-family: 'Lato', 'M PLUS Rounded 1c', sans-serif;
+            font-family:'Lato','M PLUS Rounded 1c', sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -74,7 +77,7 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${teams}" var="team">
+                <c:forEach items="${teams}" var="growths">
                     <tr>
                         <td><c:out value="${team.id}" /></td>
                         <td><c:out value="${team.name}" /></td>

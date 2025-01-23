@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-import domain.Admin;
+import dto.Admin;
 
 public interface AdminDao {
 	List<Admin> findAll() throws Exception;

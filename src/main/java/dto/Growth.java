@@ -2,13 +2,20 @@ package dto;
 
 import java.util.Date;
 
-public class GrowthList {
+public class Growth {
 	
 	private Integer id;
 	private Date observationAt;
 	private String watering;
 	private String record;
 	
+	public Growth(Integer id, Date observationAt, String watering, String record) {
+		super();
+		this.id = id;
+		this.observationAt = observationAt;
+		this.watering = watering;
+		this.record = record;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -33,7 +40,7 @@ public class GrowthList {
 	public void setRecord(String record) {
 		this.record = record;
 	}
-	public void add(GrowthList growth) {
+	public void add(Growth growth) {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}

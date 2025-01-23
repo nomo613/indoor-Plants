@@ -14,30 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class AuthFilter
- */
+
 @WebFilter("/*")
 public class AuthFilter extends HttpFilter implements Filter {
 
-	/**
-	 * @see HttpFilter#HttpFilter()
-	 */
+	
 	public AuthFilter() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	/**
-	 * @see Filter#destroy()
-	 */
+	
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 	        throws IOException, ServletException {
 
@@ -49,7 +41,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 	    if(!uri.endsWith("/login") &&
 	            !uri.endsWith("/logout") &&
 	            !uri.endsWith("/growth") &&
-	            !uri.endsWith("/growthOut") &&
+	            !uri.endsWith("/growthList") &&
 	            !uri.endsWith("/indoorPlants") &&
 	            !uri.endsWith("/newRegistretion") &&
 	            !uri.endsWith("/plantsList") &&
@@ -64,12 +56,8 @@ public class AuthFilter extends HttpFilter implements Filter {
 	    chain.doFilter(request, response); // フィルターチェーンを進める
 	}
 
-
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

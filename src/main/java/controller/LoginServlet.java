@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdminDao;
 import dao.DaoFactory;
-import domain.Admin;
+import dto.Admin;
 
 
 @WebServlet("/login")

@@ -36,7 +36,7 @@ body {
 	padding: 20px;
 	background-color: #ffffff; /* 背景色を白 */
 	border-radius: 8px; /* 角を丸く */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影 */
+	box-shadow: 0 8px 15px #61645b;  /* 影 */
 }
 	.align-right
 	{

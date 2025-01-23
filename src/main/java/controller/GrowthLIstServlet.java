@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
@@ -15,14 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import dto.GrowthList;
+import dto.Growth;
 
 @WebServlet("/growthList")
-public class GrowthLIstServlet extends HttpServlet {
+public class GrowthListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		GrowthList<Growth> growths = new ArrayList<>();
+	
+		List<Growth> growths = new ArrayList<>();
 
 		try {
 			var ctx = new InitialContext();
@@ -39,7 +41,7 @@ public class GrowthLIstServlet extends HttpServlet {
 				// ⇒ 実行結果(ResultSet)をGrowthList<Growth>にする
 				while (rs.next()) {
 					// 1行分のデータ⇒Growthに変換
-					GrowthList growth = mapToGrowth(rs);
+					Growth growth = mapToGrowth(rs);
 					// Growthをリストに加える
 					growths.add(growth);
 				}
@@ -58,13 +60,12 @@ public class GrowthLIstServlet extends HttpServlet {
 	}
 
 	// 1行分のデータをGrowth型に変換するメソッド
-	private GrowthList mapToGrowth(ResultSet rs) throws SQLException {
-				Integer id = (Integer) rs.getObject("id");
-				Date observation = rs.getTimestamp("observation_at");
-				String watering = rs.getString("watering");
-				String record = rs.getString("record");
-				return new Growth(id, observation, watering, record);
+	private Growth mapToGrowth(ResultSet rs) throws SQLException {
+		Integer id = (Integer) rs.getObject("id");
+		Date observation = rs.getTimestamp("observation_at");
+		String watering = rs.getString("watering");
+		String record = rs.getString("record");
+		return new Growth(id, observation, watering, record);
 
-	  }	
 	}
-	
+}
