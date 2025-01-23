@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>生育記録の登録</title>
+    <style>
+        body {
+            background-color: rgb(164, 187, 177);
+            text-align: center;
+            font-family: 'Lato', 'M PLUS Rounded 1c', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 2rem;
+            background: #f9f9f9d3;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: rgb(87, 88, 84);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            margin: auto;
+            width: 90%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #e9ffe8;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(87, 88, 84);
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: rgb(87, 88, 84);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>生育の記録</h3>
+        <p><a href="register" class="btn btn-secondary" disabled>登録</a></p>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>観察年月日</th>
+                    <th>水やり頻度</th>
+                    <th>生育状況</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${teams}" var="team">
+                    <tr>
+                        <td><c:out value="${team.id}" /></td>
+                        <td><c:out value="${team.name}" /></td>
+                        <td><c:out value="${team.place}" /></td>
+                        <td><fmt:formatDate value="${team.establishedAt}" pattern="yyyy-MM-dd" /></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <style>
+
+    table th:nth-child(1), table td:nth-child(1) {
+        width: 5%;
+    }
+    table th:nth-child(2), table td:nth-child(2) {
+        width: 20%;
+    }
+    table th:nth-child(3), table td:nth-child(3) {
+        width: 20%;
+    }
+    table th:nth-child(4), table td:nth-child(4) {
+        width: 55%;
+    }
+    </style>
+</body>
+</html>
