@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.PlantsListDao;
 import dao.PlantsListDaoImpl;
 import dto.Plant;
+import dto.Plants;
 
 
 @WebServlet("/plantsList")

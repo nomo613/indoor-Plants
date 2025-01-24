@@ -5,9 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import dto.Plant;
 
 public class PlantsListDaoImpl implements PlantsListDao {
+
+	public PlantsListDaoImpl(DataSource dataSource) {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
 	@Override
 	public List<Plant> findAll() {

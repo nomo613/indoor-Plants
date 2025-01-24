@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import dto.Plant;
+import dto.Growth;
 
-public class GrowthDaoImpl implements Growth{
+public class GrowthDaoImpl implements GrowthDao{
 	
 	private DataSource ds;
 	
@@ -22,8 +22,8 @@ public class GrowthDaoImpl implements Growth{
     }
 
 	@Override
-	public List<Growth> selectAll() throws Exception {
-		List<Growth> growths = new ArrayList<>();
+	public List<GrowthDao> selectAll() throws Exception {
+		List<GrowthDao> growths = new ArrayList<>();
 		try(Connection con = ds.getConnection()){
 			// SQLを実行準備
 			String sql = createSelectClauseWithJoin();
@@ -33,7 +33,7 @@ public class GrowthDaoImpl implements Growth{
 			// ResultSetをList<GrowthList>にする
 			while(rs.next()) {
 				// ResultSet ⇒ Growth
-				Growth growth = mapToGrowth(rs);
+				GrowthDao growth = mapToGrowth(rs);
 				// GrowthをListに加える
 				growths.add(mapToGrowth(rs));
 			}			
@@ -42,8 +42,8 @@ public class GrowthDaoImpl implements Growth{
 	}
 
 	@Override
-	public Growth selectById(int id) throws Exception {
-		Growth growth = null;
+	public GrowthDao selectById(int id) throws Exception {
+		GrowthDao growth = null;
 		try(Connection con = ds.getConnection()){
 		// SQLを実行準備
 		String sql = createSelectClauseWithJoin() 
@@ -54,48 +54,44 @@ public class GrowthDaoImpl implements Growth{
 		ResultSet rs = stmt.executeQuery();
 		// ResultSet を Growthに変換
 		if(rs.next()) {
-			growth = mapToGrowth(rs);
+			growth = (GrowthDao) mapToGrowth(rs);
 		}
 		}
 		return null;
 	}
 
 	@Override
-	public void insert(Growth growth) throws Exception {
+	public void insert(GrowthDao growth) throws Exception {
 		try(Connection con = ds.getConnection()){
 			// SQLを実行準備
 			String sql = "INSERT INTO growth "
-					+ " observation_at "  
-					+ " watering,  record " 
-					+ " VALUES( NOW(),?, ?)";
+					+ " (observation_at "  
+					+ " watering, record " 
+					+ " VALUES( ?, NOW(), ?, ?)";
 			var stmt = con.prepareStatement(sql);
 			// ?の設定
-			
-			stmt.setString(2, growth.getWatering());
-			stmt.setString(3, growth.getRecord());
+			stmt.setTimestamp(1, new java.sql.Timestamp(growth.getObservationAt().getTime()));
+	        stmt.setString(2, growth.getWatering());
+	        stmt.setString(3, growth.getRecord());
 			 
 			// SQLを実行
+			stmt.executeUpdate();
 		}
 	}
 	
 	// ResultSet を Growthに変換
-	private  Growth mapToGrowth(ResultSet rs) throws SQLException  {
-		Integer id = (Integer) rs.getObject("id");
-		Date observationAt = rs.getTimestamp("observation_at");
-		String watering  = rs.getString("watering ");
-		String record = rs.getString("record");
-		
-		Integer plantId = (Integer)rs.getObject("plant_id");
-		String plantName = rs.getString("plant_name");
-		Plant plant = new Plant(plantId, plantName, null, null);
-		
-		return new Growth(plantId, plantName, observationAt, watering, record);
+	private Growth mapToGrowth(ResultSet rs) throws SQLException {
+	    Integer id = rs.getInt("id");
+	    Date observationAt = rs.getTimestamp("observation_at");
+	    String watering = rs.getString("watering");
+	    String record = rs.getString("record");
+	    return new Growth(id, observationAt, watering, record);
 	}
 	
 	// JOIN句までのSELECT文を生成
 	private String createSelectClauseWithJoin() {
 		return "SELECT\n"
-				+ " plants.plant_id, plants.plant_name, "
+				+ " plants.plant_name, "
 				+ " g.observation_at,   "
 				+ " g.watering, g.record "
 				+ " FROM plants "

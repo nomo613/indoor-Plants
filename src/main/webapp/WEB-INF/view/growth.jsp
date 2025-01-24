@@ -23,7 +23,7 @@ body {
 	height: 100vh; /* 全体の高さ */
 	margin: 0; /* 余白をリセット */
 	background-color: rgb(164, 187, 177); /* 背景色 */
-	 background-image: url('images/F-7.jpg'); /* 背景画像のパス */
+	background-image: url('images/F-7.jpg'); /* 背景画像のパス */
     background-size: cover; /* 画像を全体に広げる */
     background-position: center; /* 画像を中央に配置 */
     background-repeat: no-repeat; /* 繰り返しを無効にする */
@@ -36,10 +36,27 @@ body {
 	padding: 20px;
 	background-color: #ffffff; /* 背景色を白 */
 	border-radius: 8px; /* 角を丸く */
-	box-shadow: 0 8px 15px #61645b;  /* 影 */
+	box-shadow: 0 15px 15px #61645b;  /* 影 */	
 }
-	.align-right
-	{
+
+       header {
+            top: 0;
+            left: 50px;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+          
+        }
+ 
+        header .content div {
+            margin: 5px 0;
+        }
+    
+    
+.align-right{
 	text-align
 	:
 	right; /* 右揃え */
@@ -47,6 +64,16 @@ body {
 </style>
 </head>
 <body>
+ <header>
+           <div class="content">
+            <div class="plant-info">
+                <strong>NAME:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
+            </div>
+            <div class="plant-info">
+                <strong>PLANTS:</strong> <c:out value="${plant.name}" />
+            </div>
+         
+ </header>
 
 	<div class="form-container">
 		<h2 class="text-center">生育記録の登録</h2>

@@ -6,6 +6,10 @@ public class Plant {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
+	public Plant(String plantname, String plantname2, Object object2, Object object22) {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public void setName(String plantName) {
 		// TODO 自動生成されたメソッド・スタブ
 		
@@ -26,9 +30,4 @@ public class Plant {
 		return null;
 	}
 
-
-
-
-	}
-
-
+}

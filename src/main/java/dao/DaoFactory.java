@@ -5,13 +5,17 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DaoFactory {
-	public static PlantsListDao createMemberDao() {
-		//return new MemberDaoImpl(getDataSource());
-		return null;
+	public static PlantsListDao createPlantsListDao() {
+		return new PlantsListDaoImpl(getDataSource());
 	}
 
 	public static AdminDao createAdminDao() {
 		return new AdminDaoImpl(getDataSource());
+	}
+	
+	public static GrowthDao createGrowthListDao() {
+		return new GrowthDaoImpl(getDataSource());
+		
 	}
 
 	private static DataSource getDataSource() {

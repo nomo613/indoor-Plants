@@ -42,6 +42,10 @@ main.container {
 
 }
 
+table th {
+    color: rgb(116, 112, 109) !important;
+}
+
 /* 見出し */
 h1 {
     margin: 0;

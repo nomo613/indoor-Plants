@@ -1,21 +1,23 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>生育記録の登録</title>
     <style>
         body {
             background-color: rgb(164, 187, 177);
             text-align: center;
-            font-family:'Lato','M PLUS Rounded 1c', sans-serif;
+            font-family: 'Lato', 'M PLUS Rounded 1c', sans-serif;
             margin: 0;
             padding: 0;
+            background-image: url('images/.jpg'); /* 背景画像のパス */
         }
 
         .container {
@@ -27,9 +29,8 @@
         }
 
         h3 {
-            color: rgb(87, 88, 84);
-            font-weight: bold;
-            margin-bottom: 1rem;
+            color: rgb(110, 104, 94);
+              margin-bottom: 1rem;
         }
 
         table {
@@ -61,12 +62,41 @@
         a:hover {
             color: rgb(87, 88, 84);
         }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h3>生育の記録</h3>
-        <p><a href="register" class="btn btn-secondary" disabled>登録</a></p>
+
+        <div class="left-bottom-info">
+            <div class="plant-info">
+                <strong>NAME:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
+            </div>
+            <div class="plant-info">
+                <strong>PLANTS:</strong> <c:out value="${plant.name}" />
+            </div>
+        </div>
+        <style>
+            .left-bottom-info {
+                margin-top: 1rem;
+                display: flex; /* フレックスボックス */
+                align-items: center; /* 縦方向を中央 */
+                gap: 10rem; /* 項目の間隔調整 */
+                padding: 1rem;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .plant-info {
+                font-size: 1rem;
+                color: rgb(87, 88, 84);
+            }
+        </style>
+        <form action="logout" method="post">
+        <p><a href="register" class="btn btn-outline-secondary" disabled>登録</a></p>
+        </form>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -77,16 +107,18 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${teams}" var="growths">
+                <c:forEach items="${teams}" var="team">
                     <tr>
-                        <td><c:out value="${team.id}" /></td>
-                        <td><c:out value="${team.name}" /></td>
-                        <td><c:out value="${team.place}" /></td>
-                        <td><fmt:formatDate value="${team.establishedAt}" pattern="yyyy-MM-dd" /></td>
+                        <td><c:out value="${growth.id}" /></td>
+                        <td><fmt:formatDate value="${growth.observationAt}" pattern="yyyy-MM-dd" /></td>
+                        <td><c:out value="${growth.watering}" /></td>
+                        <td><c:out value="${growth.record}" /></td>
+
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+
     </div>
     <style>
 
