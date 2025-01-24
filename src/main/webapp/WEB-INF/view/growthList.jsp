@@ -95,7 +95,7 @@
             }
         </style>
         <form action="logout" method="post">
-        <p><a href="register" class="btn btn-outline-secondary" disabled>登録</a></p>
+        <p><a href="logout" class="btn btn-outline-secondary" disabled>登録</a></p>
         </form>
         <table class="table table-striped table-hover">
             <thead>

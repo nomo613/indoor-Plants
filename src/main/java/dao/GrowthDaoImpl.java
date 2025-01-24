@@ -99,6 +99,24 @@ public class GrowthDaoImpl implements GrowthDao{
 				+ " ON plants.id = g.id;";
 }
 
+	@Override
+	public Date getObservationAt() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	@Override
+	public String getWatering() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	@Override
+	public String getRecord() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
 
 
