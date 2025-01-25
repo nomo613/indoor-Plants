@@ -1,7 +1,5 @@
 package dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +7,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Growth  {
-	
+public class Member {
+
 	private Integer id;
-	private Date observationAt;
-	private String watering;
-	private String record;
+	private String loginId;
+	private String loginPass;
+	
+	
+		}
 		
-	}

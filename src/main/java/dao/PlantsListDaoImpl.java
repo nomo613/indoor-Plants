@@ -1,8 +1,9 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -11,33 +12,47 @@ import dto.Plant;
 
 public class PlantsListDaoImpl implements PlantsListDao {
 
-	public PlantsListDaoImpl(DataSource dataSource) {
-		// TODO 自動生成されたコンストラクター・スタブ
+	private DataSource ds;
+
+	// DataSourceの準備は、
+	// GrowthDaoImplを生成するクラスに委ねる
+	public PlantsListDaoImpl(DataSource ds) {
+		this.ds = ds;
 	}
 
 	@Override
-	public List<Plant> findAll() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public List<Plant> selectAll() throws SQLException {
+		String sql = "SELECT * FROM plants";
+		try (Connection conn = ds.getConnection();
+				ResultSet rs = conn.createStatement().executeQuery(sql)) {
+			List<Plant> plantList = new ArrayList<>();
+			while (rs.next()) {
+				Plant plant = new Plant();
+				plant.setId(rs.getInt("id"));
+				plant.setPlantNumber(rs.getString("plant_number"));
+				plant.setPlantName(rs.getString("plant_name"));
+				plant.setJapaneseName(rs.getString("japanese_name"));
+				plant.setScientificName(rs.getString("scientific_name"));
+				plant.setGenusName(rs.getString("genus_name"));
+				plant.setDescription(rs.getString("description"));
+				plant.setImagePath(rs.getString("image_path"));
+				plantList.add(plant);
+				System.out.println("Image Path: " + rs.getString("image_path"));
+
+			}
+			return plantList;
+		}
 	}
 
 	@Override
-    public void insert(Plant plant) throws SQLException {
-        String sql = "INSERT INTO plants (name, type) VALUES (?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, plant.getName());
-            stmt.setString(2, plant.getType());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Error inserting plant: " + e.getMessage());
-            throw e;
-        }
+	public int countPlants() {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
 	}
 
-	private Connection getConnection() {
+	@Override
+	public void insert(Plant plant) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}	
-	
-
+		
+	}
 }

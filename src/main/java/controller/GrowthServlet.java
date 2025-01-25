@@ -36,6 +36,7 @@ public class GrowthServlet extends HttpServlet {
 		String watering = req.getParameter("watering");
 		String record = req.getParameter("record");
 
+		// デバッグ用出力
 		System.out.println(observation);
 		System.out.println(watering);
 		System.out.println(record);
@@ -43,7 +44,7 @@ public class GrowthServlet extends HttpServlet {
 		//バリデーション
 		boolean isValid = true;
 		if (observation.isBlank()) {
-			System.out.println("年月日が不正");
+			System.out.println("観察日時が空です");
 			isValid = false;
 		}
 
@@ -53,7 +54,7 @@ public class GrowthServlet extends HttpServlet {
 
 		}
 		if (record.isBlank() || record.length() > 500) {
-			System.out.println("入力不正");
+			System.out.println("記録内容が不正");
 			isValid = false;
 		}
 
@@ -64,13 +65,23 @@ public class GrowthServlet extends HttpServlet {
 			return;
 		}
 
-		//年月日をjava.util.Data型に変数
-		Date observationAt = convertDate(observation);
+		// 日付変換
+	    Date observationAt = null;
+	    try {
+	        observationAt = convertDate(observation);
+	        System.out.println("日付変換成功: " + observationAt);
+	    } catch (Exception e) {
+	        System.out.println("日付変換エラー: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 
 		//DBに保存
-		save(observationAt, watering, record);
+	    System.out.println("DB保存処理を開始");
+	    save(observationAt, watering, record);
+	    System.out.println("DB保存成功");
 
-		//growthList頁にリダイレクト
+		// 成功メッセージとにリダイレクト
+	    System.out.println("処理が正常に終了");
 		resp.sendRedirect("growthList");
 	}
 

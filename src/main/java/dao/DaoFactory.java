@@ -17,6 +17,10 @@ public class DaoFactory {
 		return new GrowthDaoImpl(getDataSource());
 		
 	}
+	
+	public static MemberDao createMemberDao() {
+		return new MemberDaoImpl(getDataSource());
+	}
 
 	private static DataSource getDataSource() {
 		InitialContext ctx = null;
@@ -36,4 +40,6 @@ public class DaoFactory {
 		}
 		return ds;
 	}
+
+
 }

@@ -85,7 +85,7 @@
 
    <section class="text-center md-4">
     <h2>初めての観葉植物、自分にぴったりな植物をみつけましょう！</h2>
-    <h2>新規登録は↓↓↓</h2>
+    <%-- <h2>新規登録は↓↓↓</h2>--%>
         <div class="row">
           <div class="col">
             <dl>
@@ -152,7 +152,7 @@
                      <li>日当たりの良い場所を好みますが、<br>直射日光は避けださいね。</li>
                      <li>水やりは土が乾いてから、過湿に注意。</li>
                   </ul>
-                  <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                  <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
               </div>
               <div class="flex-container">
                   <h5>サボテン</h5>
@@ -164,7 +164,7 @@
                     <li>水やりは控えめで、土が完全に乾いてから。</li>
                     <li>冬は水を控えて！休眠期にはいります。</li>
                  </ul>
-                 <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                 <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
               </div>
               <div class="flex-container">
                   <h5>フィロデンドロン</h5>
@@ -176,7 +176,7 @@
                     <li>土が乾いたら水やりをし湿度を高めに保つ。</li>
                     <li>定期的に葉を拭くと見栄えが良くなります。</li>
                  </ul>
-                 <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
               </div>
       </section>
 
@@ -192,7 +192,7 @@
                         <li>土が乾いてから水やり、過湿に注意！</li>
                         <li>支柱を立てると美しい形に‼</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
                 <div class="flex-container">
                       <h5>モンステラ <br>(約100cm)</h5>
@@ -204,7 +204,7 @@
                         <li>土が乾いてから水やり、過湿に注意！</li>
                         <li>支柱を立てると美しい形に育つ。</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
                 <div class="flex-container">
                       <h5 class="mons">モンステラ <br>(20-30cm)</h5>
@@ -216,7 +216,7 @@
                         <li>土が乾いてから水やり、過湿に注意！</li>
                         <li>支柱を立てると美しい形に育つ。</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
        </section>
 
@@ -232,7 +232,7 @@
                         <li>土が乾いたら水やり、根腐れに注意！</li>
                         <li>剪定して形を整えてじゅぶん好みに…</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
                 <div class="flex-container">
                       <h5>パキラ</h5>
@@ -244,7 +244,7 @@
                         <li>土が乾いてから水をたっぷりと。</li>
                         <li>幹を編んだ観葉植物としても人気。</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
                 <div class="flex-container">
                       <h5>サンスベリア</h5>
@@ -256,7 +256,7 @@
                         <li>土が乾いてから水やりをする。<br>乾燥には非常に強い。</li>
                         <li>冬は水やりを控えめに。</li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button>
+                     <%-- <button type="button" class="btn btn-outline-success" onclick="location.href='PlantsList'">新規登録</button> --%>
                 </div>
        </section>
         <button type="button" class="btn btn-outline-secondary" onclick="scrollToTop()">Topへ戻る</button>

@@ -1,17 +1,16 @@
 package dao;
 
-import java.sql.SQLException;
+
 import java.util.List;
 
 import dto.Plant;
 
 public interface PlantsListDao {
 
-	List<Plant> findAll();
+	List<Plant> selectAll() throws Exception;
 
-	void insert(Plant newPlant) throws SQLException;
+	int countPlants();
 
-	
-
+	void insert(Plant plant);
 	
 }

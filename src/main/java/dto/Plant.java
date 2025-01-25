@@ -1,33 +1,31 @@
 package dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Plant {
+    private Integer id;
+    private String plantNumber;
+    private String plantName;
+    private String japaneseName;
+    private String scientificName;
+    private String genusName;
+    private String description;
+    private String imagePath;
 
-	public Plant(Integer plantId, String plantName, Object object, Object object2) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
-
-	public Plant(String plantname, String plantname2, Object object2, Object object22) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
-
-	public void setName(String plantName) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
-
-	public void setType(String plantType) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
-
-	public String getName() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public String getType() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+    // 簡易的なコンストラクター
+    public Plant(String plantName, String description, String plantNumber, String japaneseName, String scientificName, String genusName, String imagePath) {
+        this.plantNumber = plantNumber;
+        this.plantName = plantName;
+        this.japaneseName = japaneseName;
+        this.scientificName = scientificName;
+        this.genusName = genusName;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
 
 }

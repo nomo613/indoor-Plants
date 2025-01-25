@@ -38,12 +38,14 @@ public class AuthFilter extends HttpFilter implements Filter {
 	    HttpSession session = req.getSession();
 
 	    String uri = req.getRequestURI();
+	   
+
 	    if(!uri.endsWith("/login") &&
 	            !uri.endsWith("/logout") &&
 	            !uri.endsWith("/growth") &&
 	            !uri.endsWith("/growthList") &&
 	            !uri.endsWith("/indoorPlants") &&
-	            !uri.endsWith("/newRegistretion") &&
+	            !uri.endsWith("/registration") &&
 	            !uri.endsWith("/plantsList") &&
 	            !uri.contains("/css/") &&       
 	            !uri.contains("/js/") &&       
