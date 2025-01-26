@@ -45,7 +45,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 	            !uri.endsWith("/growth") &&
 	            !uri.endsWith("/growthList") &&
 	            !uri.endsWith("/indoorPlants") &&
-	            !uri.endsWith("/registration") &&
+	            !uri.endsWith("/registered") &&
 	            !uri.endsWith("/plantsList") &&
 	            !uri.contains("/css/") &&       
 	            !uri.contains("/js/") &&       

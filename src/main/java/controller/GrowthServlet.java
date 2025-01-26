@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import dao.GrowthDao;
+
 @WebServlet("/growth")
 public class GrowthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +38,6 @@ public class GrowthServlet extends HttpServlet {
 		String watering = req.getParameter("watering");
 		String record = req.getParameter("record");
 
-		// デバッグ用出力
 		System.out.println(observation);
 		System.out.println(watering);
 		System.out.println(record);
@@ -44,7 +45,7 @@ public class GrowthServlet extends HttpServlet {
 		//バリデーション
 		boolean isValid = true;
 		if (observation.isBlank()) {
-			System.out.println("観察日時が空です");
+			System.out.println("年月日が不正");
 			isValid = false;
 		}
 
@@ -54,7 +55,7 @@ public class GrowthServlet extends HttpServlet {
 
 		}
 		if (record.isBlank() || record.length() > 500) {
-			System.out.println("記録内容が不正");
+			System.out.println("入力不正");
 			isValid = false;
 		}
 
@@ -65,27 +66,28 @@ public class GrowthServlet extends HttpServlet {
 			return;
 		}
 
-		// 日付変換
-	    Date observationAt = null;
-	    try {
-	        observationAt = convertDate(observation);
-	        System.out.println("日付変換成功: " + observationAt);
-	    } catch (Exception e) {
-	        System.out.println("日付変換エラー: " + e.getMessage());
-	        e.printStackTrace();
-	    }
+		//年月日をjava.util.Data型に変数
+		Date observationAt = convertDate(observation);
 
 		//DBに保存
-	    System.out.println("DB保存処理を開始");
-	    save(observationAt, watering, record);
-	    System.out.println("DB保存成功");
+		save(observationAt, watering, record);
 
-		// 成功メッセージとにリダイレクト
-	    System.out.println("処理が正常に終了");
-		resp.sendRedirect("growthList");
+		// ここでgrowthオブジェクトを取得
+	    GrowthDao growth = getGrowth();  // 必要に応じて取得するメソッドを追加
+
+	    // Growthオブジェクトをリクエストにセット
+	    req.setAttribute("growth", growth);  // GrowthオブジェクトをJSPに渡す
+
+	    // growth.jspに遷移
+	    req.getRequestDispatcher("/WEB-INF/view/growth.jsp").forward(req, resp);
 	}
 
-	// チーム情報をDataに保存するメソッド
+	private GrowthDao getGrowth() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	// 情報をDataに保存するメソッド
 	private void save(Date observation, String watering, String record) {
 
 		try {
@@ -116,7 +118,7 @@ public class GrowthServlet extends HttpServlet {
 
 	// 文字列をDate型に変換するメソッド
 	private Date convertDate(String date) {
-		var sdf = new SimpleDateFormat("y-MM-dd");
+		var sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = new Date();
 		try {
 			d = sdf.parse(date);
@@ -128,4 +130,5 @@ public class GrowthServlet extends HttpServlet {
 
 	}
 }
+
 

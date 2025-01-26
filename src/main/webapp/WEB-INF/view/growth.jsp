@@ -67,7 +67,7 @@ body {
  <header>
            <div class="content">
             <div class="plant-info">
-                <strong>NAME:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
+                <strong>PLANTS_ID:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
             </div>
             <div class="plant-info">
                 <strong>PLANTS:</strong> <c:out value="${plant.name}" />

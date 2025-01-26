@@ -16,9 +16,11 @@ public class Plant {
     private String genusName;
     private String description;
     private String imagePath;
+    
 
     // 簡易的なコンストラクター
-    public Plant(String plantName, String description, String plantNumber, String japaneseName, String scientificName, String genusName, String imagePath) {
+    // 必要に応じてデフォルトコンストラクタを追加
+    public Plant(int id, String plantName, String description, String plantNumber,String japaneseName, String scientificName, String genusName, String imagePath) {
         this.plantNumber = plantNumber;
         this.plantName = plantName;
         this.japaneseName = japaneseName;
@@ -27,5 +29,11 @@ public class Plant {
         this.description = description;
         this.imagePath = imagePath;
     }
+
+
+	public void setMemberName(String string) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 
 }
