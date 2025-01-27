@@ -25,8 +25,8 @@ public class GrowthDaoImpl implements GrowthDao{
     }
 
 	@Override
-	public List<GrowthDao> selectAll() throws Exception {
-		List<GrowthDao> growths = new ArrayList<>();
+	public List<Growth> selectAll() throws Exception {
+		List<Growth> growths = new ArrayList<>();
 		try(Connection con = ds.getConnection()){
 			// SQLを実行準備
 			String sql = createSelectClauseWithJoin();
@@ -36,17 +36,17 @@ public class GrowthDaoImpl implements GrowthDao{
 			// ResultSetをList<GrowthList>にする
 			while(rs.next()) {
 				// ResultSet ⇒ Growth
-				GrowthDao growth = (GrowthDao) mapToGrowth(rs);
+				Growth growth = mapToGrowth(rs);
 				// GrowthをListに加える
-				growths.add((GrowthDao) mapToGrowth(rs));
+				growths.add(growth);
 			}			
 		}
 		return growths;
 	}
 
 	@Override
-	public GrowthDao selectById(int id) throws Exception {
-		GrowthDao growth = null;
+	public Growth selectById(int id) throws Exception {
+		Growth growth = null;
 		try(Connection con = ds.getConnection()){
 		// SQLを実行準備
 		String sql = createSelectClauseWithJoin() 
@@ -57,7 +57,7 @@ public class GrowthDaoImpl implements GrowthDao{
 		ResultSet rs = stmt.executeQuery();
 		// ResultSet を Growthに変換
 		if(rs.next()) {
-			growth = (GrowthDao) mapToGrowth(rs);
+			growth = mapToGrowth(rs);
 		}
 		}
 		return growth;
@@ -69,20 +69,19 @@ public class GrowthDaoImpl implements GrowthDao{
 			// SQLを実行準備
 			String sql = "INSERT INTO growth "
 					+ " (observation_at, watering, "  
-					+ "  record, plant_id) " 
-					+ " VALUES(  NOW(), ?, ?, ?, ?) ";
+					+ "  record) " 
+					+ " VALUES( ?, ?, ?, ?,NOW()) ";
 			var stmt = con.prepareStatement(sql);
 			// ?の設定
 			Date observation = growth.getObservationAt();
-			long longBd = observation.getTime();
-			Timestamp tsBd = new Timestamp(longBd);
-			stmt.setTimestamp(1, tsBd);
+			long longobservationAt = observation.getTime();
+			Timestamp tsobservationAt = new Timestamp(longobservationAt);
+			stmt.setTimestamp(1, tsobservationAt);
 	        stmt.setString(2, growth.getWatering());
 	        stmt.setString(3, growth.getRecord());
-	        Plant plant = growth.getpPlant();
+	        Plant plant = growth.getPlant();
 	        stmt.setObject(4, plant.getId(), Types.INTEGER);
-	        
-			 
+
 			// SQLを実行
 			stmt.executeUpdate();
 		}
@@ -90,59 +89,28 @@ public class GrowthDaoImpl implements GrowthDao{
 	
 	// ResultSet を Growthに変換
 	private Growth mapToGrowth(ResultSet rs) throws SQLException {
-	    Integer id = rs.getInt("id");
+	    Integer id = (Integer) rs.getObject("id");
 	    Date observationAt = rs.getTimestamp("observation_at");
 	    String watering = rs.getString("watering");
 	    String record = rs.getString("record");
 	    
 	    Integer plantId = (Integer) rs.getObject("plant_id");
-	    String plantNumber = rs.getString("plant_nember");
 	    String plantName = rs.getString("plant_name");
-	    Plant plant = new Plant(plantId, plantNumber, plantName, null,null,null);
+	    Plant plant = new Plant(plantId, plantName, null,null, null,null, null,null);
 	    
 	    return new Growth(id, observationAt, watering, record, plant);
 	}
 	
 	// JOIN句までのSELECT文を生成
 	private String createSelectClauseWithJoin() {
-		return "SELECT\n"
+		return "SELECT "
 				+ " plants.plant_name, "
 				+ " g.observation_at,   "
 				+ " g.watering, g.record "
 				+ " FROM plants "
 				+ " JOIN growths AS g "
-				+ " ON plants.id = g.id;";
+				+ " ON plants.id = g.id; ";
 }
-
-	@Override
-	public Date getObservationAt() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	@Override
-	public String getWatering() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	@Override
-	public String getRecord() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	@Override
-	public void setPlantName(String string) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
-
-	@Override
-	public void setObservationAt(Timestamp timestamp) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
 }
 
