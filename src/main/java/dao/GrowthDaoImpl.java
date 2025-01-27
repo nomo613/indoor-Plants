@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import dto.Growth;
+import dto.Plant;
 
 public class GrowthDaoImpl implements GrowthDao{
 	
@@ -62,18 +64,24 @@ public class GrowthDaoImpl implements GrowthDao{
 	}
 
 	@Override
-	public void insert(GrowthDao growth) throws Exception {
+	public void insert(Growth growth) throws Exception {
 		try(Connection con = ds.getConnection()){
 			// SQLを実行準備
 			String sql = "INSERT INTO growth "
-					+ " (observation_at "  
-					+ " watering, record " 
-					+ " VALUES( ?, NOW(), ?, ?)";
+					+ " (observation_at, watering, "  
+					+ "  record, plant_id) " 
+					+ " VALUES(  NOW(), ?, ?, ?, ?) ";
 			var stmt = con.prepareStatement(sql);
 			// ?の設定
-			stmt.setTimestamp(1, new java.sql.Timestamp(growth.getObservationAt().getTime()));
+			Date observation = growth.getObservationAt();
+			long longBd = observation.getTime();
+			Timestamp tsBd = new Timestamp(longBd);
+			stmt.setTimestamp(1, tsBd);
 	        stmt.setString(2, growth.getWatering());
 	        stmt.setString(3, growth.getRecord());
+	        Plant plant = growth.getpPlant();
+	        stmt.setObject(4, plant.getId(), Types.INTEGER);
+	        
 			 
 			// SQLを実行
 			stmt.executeUpdate();
@@ -86,7 +94,13 @@ public class GrowthDaoImpl implements GrowthDao{
 	    Date observationAt = rs.getTimestamp("observation_at");
 	    String watering = rs.getString("watering");
 	    String record = rs.getString("record");
-	    return new Growth(id, observationAt, watering, record);
+	    
+	    Integer plantId = (Integer) rs.getObject("plant_id");
+	    String plantNumber = rs.getString("plant_nember");
+	    String plantName = rs.getString("plant_name");
+	    Plant plant = new Plant(plantId, plantNumber, plantName, null,null,null);
+	    
+	    return new Growth(id, observationAt, watering, record, plant);
 	}
 	
 	// JOIN句までのSELECT文を生成

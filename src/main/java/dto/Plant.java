@@ -30,10 +30,4 @@ public class Plant {
         this.imagePath = imagePath;
     }
 
-
-	public void setMemberName(String string) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
-
 }

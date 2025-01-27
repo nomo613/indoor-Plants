@@ -31,6 +31,10 @@ public class Growth {
 	public String getRecord() {
 		return record;
 	}
+	public Plant getpPlant() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 	
 	
 

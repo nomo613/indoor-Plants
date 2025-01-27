@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,64 +12,67 @@ import dto.Plant;
 
 public class PlantsListDaoImpl implements PlantsListDao {
 
-    private DataSource ds;
+	private DataSource ds;
 
-    public PlantsListDaoImpl(DataSource ds) {
-        this.ds = ds;
-    }
+	public PlantsListDaoImpl(DataSource ds) {
+		this.ds = ds;
+	}
 
-    @Override
-    public List<Plant> selectAll() throws SQLException {
-        String sql = "SELECT * FROM plants";
-        try (Connection conn = ds.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+	@Override
+	public List<Plant> selectAll() throws SQLException {
+		List<Plant> plants = new ArrayList<>();
+		try (Connection con = ds.getConnection()) {
+			String sql = "SELECT * FROM plants";
+			var stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Plant plant = mapToPlant(rs);
+				plants.add(plant);
+			}
+		}
+		return plants;
+	}
 
-            List<Plant> plantList = new ArrayList<>();
-            while (rs.next()) {
-                plantList.add(mapPlant(rs));
-            }
-            return plantList;
-        }
-    }
+	private Plant mapToPlant(ResultSet rs) throws SQLException {
+		Integer id = (Integer) rs.getObject("id");
+		String plantNumber = rs.getString("plant_number");
+		String plantName = rs.getString("plant_name");
+		String japaneseName = rs.getString("japanese_name");
+		String scientificName = rs.getString("scientific_name");
+		String genusName = rs.getString("genus_name");
+		String description = rs.getString("description");
+		String imagePath = rs.getString("image_path");
+		return new Plant(id, plantNumber, plantName, japaneseName, scientificName, genusName, description, imagePath);
+	}
 
-    private Plant mapPlant(ResultSet rs) throws SQLException {
-        return new Plant(
-            rs.getInt("id"),
-            rs.getString("plant_number"),
-            rs.getString("plant_name"),
-            rs.getString("japanese_name"),
-            rs.getString("scientific_name"),
-            rs.getString("genus_name"),
-            rs.getString("description"),
-            rs.getString("image_path")
-        );
-    }
+	@Override
+	public Plant selectById(String plantName) throws Exception {
+		Plant plant = null;
+		try (Connection con = ds.getConnection()) {
+			// SQLを実行準備
+			String sql = createSelectClauseWithJoin()
+					+ "WHERE plant.plant_name = ?";
+			var stmt = con.prepareStatement(sql);
+			stmt.setString(1, plantName);
 
+			// SQLを実行
+			ResultSet rs = stmt.executeQuery();
 
-    @Override
-    public List<Plant> getRegisteredPlants() throws SQLException {
-        String sql = "SELECT * FROM registered_plants";
-        try (Connection conn = ds.getConnection();
-             ResultSet rs = conn.createStatement().executeQuery(sql)) {
-            List<Plant> plantList = new ArrayList<>();
-            while (rs.next()) {
-                plantList.add(mapPlant(rs));
-            }
-            return plantList;
-        }
-        }
+			// ResultSet ⇒　Plantに変換
+			if (rs.next()) {
+				plant = mapToPlant(rs);
+			}
 
-    @Override
-    public void registerPlantById(int plantId) throws SQLException {
-        String sql = "INSERT INTO registered_plants (SELECT * FROM plants WHERE id = ?)";
-        try (Connection conn = ds.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, plantId);
-            pstmt.executeUpdate();
-        }
-    }
-    }
+		}
+		return plant;
+	}
 
-    
+	private String createSelectClauseWithJoin() {
+		 return "SELECT "
+				   + "id, plant_number, plant_name, " 
+		           + "japanese_name, scientific_name, genus_name, "
+		           + "description, image_path " 
+		           + "FROM plants ";
+	}
 
+}

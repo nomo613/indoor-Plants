@@ -19,7 +19,7 @@
 		</header>
 
 		<p style="font-weight: bold; color: rgb(87, 88, 84);">
-			登録後、植物に関する詳細な生育記録を追加できます。
+			登録後、植物に関する生育記録を追加できます。
 		</p>
 
 
@@ -62,7 +62,7 @@
 
 						<div style="text-align: right;">
 							<button type="button" class="btn btn-outline-secondary"
-								onclick="location.href='growth?id=${plant.id}'">登録</button>
+								onclick="location.href='growth?id=${plant.plantName}'">登録</button>
 						</div>
 
 
