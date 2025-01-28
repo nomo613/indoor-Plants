@@ -83,12 +83,12 @@ public class GrowthDaoImpl implements GrowthDao{
 	
 	// ResultSet を Growthに変換
 	private Growth mapToGrowth(ResultSet rs) throws SQLException {
-	    Integer id =  rs.getInt("id");
+		Integer id = (Integer) rs.getObject("id");
 	    Date observationAt = rs.getTimestamp("observation_at");
 	    String watering = rs.getString("watering");
 	    String record = rs.getString("record");
 	    
-	    Integer plantId = rs.getInt("plant_id");
+	    Integer plantId = (Integer) rs.getObject("plant_id");
 	    String plantName = rs.getString("plant_name");
 	    Plant plant = new Plant(plantId, plantName, null,null, null,null, null,null);
 	    

@@ -21,7 +21,7 @@ public class RegisteredPlantsDaoImpl implements RegisteredPlantsDao {
     @Override
     public List<Plant> getRegisteredPlants() throws SQLException {
         String sql = """
-            SELECT p.plant_id, p.plant_name, p.image_path, m.member_name 
+            SELECT p.plant_id, p.plant_name, p.image_path, m.user_name 
             FROM plants p
             JOIN members m ON m.member_id = p.member_id
         """;
@@ -36,7 +36,7 @@ public class RegisteredPlantsDaoImpl implements RegisteredPlantsDao {
                 plant.setId(rs.getInt("plant_id"));
                 plant.setPlantName(rs.getString("plant_name"));
                 plant.setImagePath(rs.getString("image_path"));
-                plant.setMemberName(rs.getString("member_name"));
+                plant.setUserName(rs.getString("user_name"));
                 registeredPlants.add(plant);
             }
             return registeredPlants;

@@ -6,6 +6,7 @@ import dto.Plant;
 
 public interface PlantsListDao {
     List<Plant> selectAll() throws Exception;
-    Plant selectById(String plantName) throws Exception;
-    
+
+	Object selectById(String plantName);
+   
 }

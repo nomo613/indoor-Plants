@@ -69,7 +69,7 @@ header .content div {
 					</div>
 					<div class="plant-info">
 						<strong>PLANTS:</strong>
-						<c:out value="${plant.plantName}" />
+						<c:out value="${cpl}" />
 					</div>
 				</c:forEach>
 			</c:if>
