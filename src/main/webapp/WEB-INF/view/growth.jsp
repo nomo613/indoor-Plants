@@ -24,10 +24,10 @@ body {
 	margin: 0; /* 余白をリセット */
 	background-color: rgb(164, 187, 177); /* 背景色 */
 	background-image: url('images/F-7.jpg'); /* 背景画像のパス */
-    background-size: cover; /* 画像を全体に広げる */
-    background-position: center; /* 画像を中央に配置 */
-    background-repeat: no-repeat; /* 繰り返しを無効にする */
-    background-attachment: fixed; /* スクロールしても背景を固定 */
+	background-size: cover; /* 画像を全体に広げる */
+	background-position: center; /* 画像を中央に配置 */
+	background-repeat: no-repeat; /* 繰り返しを無効にする */
+	background-attachment: fixed; /* スクロールしても背景を固定 */
 }
 
 /* フォームのスタイル */
@@ -36,44 +36,46 @@ body {
 	padding: 20px;
 	background-color: #ffffff; /* 背景色を白 */
 	border-radius: 8px; /* 角を丸く */
-	box-shadow: 0 15px 15px #61645b;  /* 影 */	
+	box-shadow: 0 15px 15px #61645b; /* 影 */
 }
 
-       header {
-            top: 0;
-            left: 50px;
-            width: 30%;
-            display: flex;
-            align-items: center;
-            color: white;
-            padding: 10px 20px;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-          
-        }
- 
-        header .content div {
-            margin: 5px 0;
-        }
-    
-    
-.align-right{
-	text-align
-	:
-	right; /* 右揃え */
+header {
+	top: 0;
+	left: 50px;
+	width: 30%;
+	display: flex;
+	align-items: center;
+	color: white;
+	padding: 10px 20px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+header .content div {
+	margin: 5px 0;
+}
+
+.align-right {
+	text-align: right; /* 右揃え */
 }
 </style>
 </head>
 <body>
- <header>
-           <div class="content">
-            <div class="plant-info">
-                <strong>PLANTS_ID:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
-            </div>
-            <div class="plant-info">
-                <strong>PLANTS:</strong> <c:out value="${growth.plantName}" />
-            </div>
-         
- </header>
+	<header>
+		<div class="content">
+			<c:if test="${not empty plants}">
+				<c:forEach var="growth?id" items="${plants}">
+					<div class="plant-info">
+						<strong>PLANTS_ID:</strong> <a href="${plantName}">${plant.plantName}</a>
+					</div>
+					<div class="plant-info">
+						<strong>PLANTS:</strong>
+						<c:out value="${plant.plantName}" />
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+
+	</header>
 
 	<div class="form-container">
 		<h2 class="text-center">生育記録の登録</h2>
@@ -87,10 +89,10 @@ body {
 				水やり: <input name="watering" list="watering" class="form-control"
 					placeholder="選択または入力してください">
 				<datalist id="watering">
-					<option value="毎日"></option>
-					<option value="2日～3日"></option>
-					<option value="1週間"></option>
-					<option value="適宜"></option>
+					<option value="毎日">
+					<option value="2日～3日">
+					<option value="1週間">
+					<option value="適宜">
 				</datalist>
 			</p>
 
@@ -98,17 +100,13 @@ body {
 				生育状況:
 				<textarea name="record" class="form-control" rows="10"
 					placeholder="例: 良好/葉が弱ってる"></textarea>
-				<c:out value="${item.summary}" />
 			</p>
 
 			<p class="align-right">
 				<button type="submit" class="btn btn-outline-secondary">登録</button>
 			</p>
 		</form>
-
-
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
-
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>

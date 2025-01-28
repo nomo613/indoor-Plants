@@ -70,9 +70,9 @@
         <h3>生育の記録</h3>
 
         <div class="left-bottom-info">
-            <div class="plant-info">
+            <div class="plant-info"> 
                 <strong>PLANTS_ID:</strong> <a href="<c:out value="${growth.id}" />"><c:out value="${member.name}" /></a>
-            </div>
+            </div> 
             <div class="plant-info">
                 <strong>PLANTS:</strong> <c:out value="${plant.name}" />
             </div>
@@ -107,12 +107,13 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${teams}" var="team">
+                <%-- 生育の繰り返し表示 --%>
+                <c:forEach var="growthList" items="${growths}" >
                     <tr>
-                        <td><c:out value="${growth.id}" /></td>
-                        <td><fmt:formatDate value="${growth.observationAt}" pattern="yyyy-MM-dd" /></td>
-                        <td><c:out value="${growth.watering}" /></td>
-                        <td><c:out value="${growth.record}" /></td>
+                        <td><c:out value="${growthList.id}" /></td>
+                        <td><fmt:formatDate value="${growthList.observationAt}" pattern="yyyy-MM-dd" /></td>
+                        <td><c:out value="${growthList.watering}" /></td>
+                        <td><c:out value="${growthList.record}" /></td>
 
                     </tr>
                 </c:forEach>

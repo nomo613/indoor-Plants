@@ -13,8 +13,13 @@ public class DaoFactory {
 		return new AdminDaoImpl(getDataSource());
 	}
 	
-	public static GrowthDao createGrowthListDao() {
+	public static GrowthDao createGrowthDao() {
 		return new GrowthDaoImpl(getDataSource());
+		
+	}
+	
+	public static GrowthListDao createGrowthListDao() {
+		return new GrowthListDaoImpl(getDataSource());
 		
 	}
 	
