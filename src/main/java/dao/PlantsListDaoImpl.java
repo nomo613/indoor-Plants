@@ -35,14 +35,14 @@ public class PlantsListDaoImpl implements PlantsListDao {
 
 	private Plant mapToPlant(ResultSet rs) throws SQLException {
 		Integer id = (Integer) rs.getObject("id");
-		String plantId = rs.getString("plant_id");
+		String plantNumber = rs.getString("plant_number");
 		String plantName = rs.getString("plant_name");
 		String japaneseName = rs.getString("japanese_name");
 		String scientificName = rs.getString("scientific_name");
 		String genusName = rs.getString("genus_name");
 		String description = rs.getString("description");
 		String imagePath = rs.getString("image_path");
-		return new Plant(id, plantId, plantName, japaneseName, scientificName, genusName, description, imagePath);
+		return new Plant(id, plantNumber, plantName, japaneseName, scientificName, genusName, description, imagePath);
 	}
 
 	@Override
@@ -69,12 +69,10 @@ public class PlantsListDaoImpl implements PlantsListDao {
 
 	private String createSelectClauseWithJoin() {
 		 return "SELECT "
-				   + " id, plant_, plant_name, " 
-		           + " japanese_name, scientific_name, genus_name, "
-		           + " description, image_path " 
-		           + " FROM plants As p"
-		           + " JOIN growths As g "
-		           + " ON  p.cpl = g.plant_cpl ";
+				   + "id, plant_number, plant_name, " 
+		           + "japanese_name, scientific_name, genus_name, "
+		           + "description, image_path " 
+		           + "FROM plants ";
 	}
 
 }

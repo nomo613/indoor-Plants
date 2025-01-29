@@ -62,7 +62,7 @@
 
 						<div style="text-align: right;">
 							<button type="button" class="btn btn-outline-secondary"
-								onclick="location.href='growth?id=${cpl}'">登録</button>
+								onclick="location.href='growth?id=${plantName}'">登録</button>
 						</div>
 
 
