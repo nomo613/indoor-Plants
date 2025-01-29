@@ -107,6 +107,12 @@ public class GrowthDaoImpl implements GrowthDao{
 
 }
 
+	@Override
+	public Growth findLatestGrowth() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
 
 

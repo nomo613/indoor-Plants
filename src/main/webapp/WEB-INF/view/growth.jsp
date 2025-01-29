@@ -62,15 +62,13 @@ header .content div {
 <body>
 	<header>
 		<div class="content">
-		
-					<div class="plant-info">
-						<strong>PLANTS:</strong>
-						<c:out value="${plantName}" />
-					</div>
-
+			<div class="plant-info">
+				PLANTS : 
+				<c:out value="${plantName}" />
+			</div>
 		</div>
-
 	</header>
+
 
 	<div class="form-container">
 		<h2 class="text-center">生育記録の登録</h2>

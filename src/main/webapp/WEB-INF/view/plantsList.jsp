@@ -19,7 +19,7 @@
 		</header>
 
 		<p style="font-weight: bold; color: rgb(87, 88, 84);">
-			登録後、植物に関する生育記録を追加できます。
+			登録ボタンを押すと植物に関する生育記録を追加できます。
 		</p>
 
 
@@ -53,7 +53,8 @@
 							<div class="flex-grow-1 text-center">
 								<h2 class="card-title text-secondary">${plant.plantName}</h2>
 								<p class="card-text text-muted mb-1">
-									和名: ${plant.japaneseName}<br> 学名: ${plant.scientificName}<br>
+									和名: ${plant.japaneseName}<br> 
+									学名: <em>${plant.scientificName}</em><br>  
 									属名: ${plant.genusName}
 								</p>
 								<p class="card-text text-secondary small mb-0">${plant.description}</p>

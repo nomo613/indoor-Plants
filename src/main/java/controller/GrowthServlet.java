@@ -15,18 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import dao.GrowthDao;
-
 @WebServlet("/growth")
 public class GrowthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-	
-      
-		
 		
 		String plantName = req.getParameter("plantName");
 		req.setAttribute("plantName", plantName);
@@ -53,6 +47,7 @@ public class GrowthServlet extends HttpServlet {
 
 		//バリデーション
 		boolean isValid = true;
+		
 		if (observation.isBlank()) {
 			System.out.println("年月日が不正");
 			isValid = false;
@@ -81,22 +76,13 @@ public class GrowthServlet extends HttpServlet {
 		//DBに保存
 		save(observationAt, watering, record);
 
-		// ここでgrowthオブジェクトを取得
-	    GrowthDao growth = getGrowth();  // 必要に応じて取得するメソッドを追加
-
-	    // Growthオブジェクトをリクエストにセット
-	    req.setAttribute("growth", growth);  // GrowthオブジェクトをJSPに渡す
-
-	    // growth.jspに遷移
-	    req.getRequestDispatcher("/WEB-INF/view/growth.jsp").forward(req, resp);
+		// 一覧ページにリダイレクト
+	    resp.sendRedirect("growthList");
 	}
 
-	private GrowthDao getGrowth() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 
-	// 情報をDataに保存するメソッド
+
+	// 情報をDBに保存するメソッド
 	private void save(Date observation, String watering, String record) {
 
 		try {

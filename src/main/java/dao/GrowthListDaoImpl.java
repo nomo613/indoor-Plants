@@ -15,6 +15,8 @@ public class GrowthListDaoImpl implements GrowthListDao{
 	
 	private DataSource ds;
 	
+	// DetaSourceの準備は
+	// GrowthDaoImplを生成するクラス（DaoFactr）に委ねる
 	public GrowthListDaoImpl(DataSource ds) {
 		this.ds = ds;
 	}
