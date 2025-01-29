@@ -62,17 +62,12 @@ header .content div {
 <body>
 	<header>
 		<div class="content">
-			<c:if test="${not empty plants}">
-				<c:forEach var="growth?id" items="${plants}">
-					<div class="plant-info">
-						<strong>PLANTS_ID:</strong> <a href="${plantName}">${plant.plantName}</a>
-					</div>
+		
 					<div class="plant-info">
 						<strong>PLANTS:</strong>
-						<c:out value="${plant.plantName}" />
+						<c:out value="${plantName}" />
 					</div>
-				</c:forEach>
-			</c:if>
+
 		</div>
 
 	</header>
@@ -80,7 +75,7 @@ header .content div {
 	<div class="form-container">
 		<h2 class="text-center">生育記録の登録</h2>
 
-		<form action="growth" method="post">
+		<form action="growthList" method="post">
 			<p>
 				観察日: <input type="date" name="observationAt" class="form-control">
 			</p>

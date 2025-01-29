@@ -35,26 +35,26 @@ public class PlantsListDaoImpl implements PlantsListDao {
 
 	private Plant mapToPlant(ResultSet rs) throws SQLException {
 		Integer id = (Integer) rs.getObject("id");
-		String plantNumber = rs.getString("plant_number");
+		String plantCpl = rs.getString("plant_cpl");
 		String plantName = rs.getString("plant_name");
 		String japaneseName = rs.getString("japanese_name");
 		String scientificName = rs.getString("scientific_name");
 		String genusName = rs.getString("genus_name");
 		String description = rs.getString("description");
 		String imagePath = rs.getString("image_path");
-		return new Plant(id, plantNumber, plantName, japaneseName, scientificName, genusName, description, imagePath);
+		return new Plant(id, plantCpl, plantName, japaneseName, scientificName, genusName, description, imagePath);
 	}
 
 	@Override
-	public Plant selectById(String plantName) throws Exception {
+	public Plant selectById(int id) throws Exception {
 		Plant plant = null;
 		try (Connection con = ds.getConnection()) {
 			// SQLを実行準備
 			String sql = createSelectClauseWithJoin()
-					+ "WHERE plant.plant_name = ?";
+					+ " WHERE p.id = ?";
 			var stmt = con.prepareStatement(sql);
-			stmt.setString(1, plantName);
-
+			stmt.setInt(1, id);
+			
 			// SQLを実行
 			ResultSet rs = stmt.executeQuery();
 
@@ -69,10 +69,55 @@ public class PlantsListDaoImpl implements PlantsListDao {
 
 	private String createSelectClauseWithJoin() {
 		 return "SELECT "
-				   + "id, plant_number, plant_name, " 
-		           + "japanese_name, scientific_name, genus_name, "
-		           + "description, image_path " 
-		           + "FROM plants ";
-	}
+				   + " p.id, p.plant_cpl, p.plant_name, "
+				   + " g.id, g.observation_at, "
+				   + " g.watering, g.record  "
+				   + " FROM plants As pgrowths "
+				   + " JOIN growths As g "
+				   + " ON  p.plant_cpl = g.plant_cpl ";
 
 }
+
+	@Override
+	public Plant selectById(String plantName) throws Exception {
+		Plant plant = null;
+		try (Connection con = ds.getConnection()){
+			// SQLを実行準備
+			String sql = createSelectClauseWithJoin()+ "WHERE p.plant_name = ?";
+			var stmt = con.prepareStatement(sql);
+			stmt.setString(1, plantName);
+			// SQLを実行
+			ResultSet rs = stmt.executeQuery();
+			// ResultSet ⇒ Playerに変換
+            if(rs.next()) {
+            	plant = mapToPlant(rs);
+            }
+			
+		}
+		
+		return plant;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import dao.DaoFactory;
 import dao.GrowthDao;
-import dao.PlantsListDao;
 
 @WebServlet("/growth")
 public class GrowthServlet extends HttpServlet {
@@ -27,17 +25,11 @@ public class GrowthServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 	
-		String plantName = req.getParameter("plant_name");
-		System.out.println("Received plantName: " + plantName);
-        
-		try {
-			 PlantsListDao dao = DaoFactory.createPlantsListDao();
-	            req.setAttribute("plants", dao.selectById(plantName));	
-	           
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
+      
+		
+		
+		String plantName = req.getParameter("plantName");
+		req.setAttribute("plantName", plantName);
 		
 		// list.jspにフォワード
 		req.getRequestDispatcher("/WEB-INF/view/growth.jsp")

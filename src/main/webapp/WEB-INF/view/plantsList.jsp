@@ -51,7 +51,7 @@
 
 							<%-- 右側のテキスト --%>
 							<div class="flex-grow-1 text-center">
-								<h5 class="card-title text-secondary">${plant.plantName}</h5>
+								<h2 class="card-title text-secondary">${plant.plantName}</h2>
 								<p class="card-text text-muted mb-1">
 									和名: ${plant.japaneseName}<br> 学名: ${plant.scientificName}<br>
 									属名: ${plant.genusName}
@@ -62,7 +62,7 @@
 
 						<div style="text-align: right;">
 							<button type="button" class="btn btn-outline-secondary"
-								onclick="location.href='growth?id=${plantName}'">登録</button>
+								onclick="location.href='growth?plantName=${plant.plantName}'">登録</button>
 						</div>
 
 

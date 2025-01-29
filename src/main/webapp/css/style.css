@@ -273,13 +273,11 @@ span {
     object-fit: cover; /* 画像を枠内に収める */
     border-radius: 8px; /* 画像の角も丸める */
 }
-.card h5 {
-    font-size: 16px; /* タイトルを小さくする */
+/*.card h5 {
+    font-size: 16px; /* タイトルを小さくする 
 
-}
-.card ul li {
-    font-size: 12px; /* リストの文字サイズを調整 */
-}
+}*/
+
 
 .col-md-6{
     margin-top: 20px;
