@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -94,13 +93,12 @@ public class GrowthServlet extends HttpServlet {
 				// SQLを実行する
 				String sql = "INSERT INTO growths " 
 						+ " (observation_at,watering,record) " 
-						+ " VALUES (?, ?, ?)"; 
+						+ " VALUES (NOW(), ?, ?) "; 
 
 				// 1. SQLを実行準備状態にする
-				var stmt = con.prepareStatement(sql);
-				stmt.setTimestamp(1, new Timestamp(observation.getTime()));
-				stmt.setString(2, watering);
-				stmt.setString(3, record);
+				var stmt = con.prepareStatement(sql);		
+				stmt.setString(1, watering);
+				stmt.setString(2, record);
 				
 				// 2. SQLを実行
 				stmt.executeUpdate();

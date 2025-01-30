@@ -3,7 +3,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,15 +65,16 @@ public class GrowthDaoImpl implements GrowthDao{
 	public void insert(Growth growth) throws Exception {
 		try(Connection con = ds.getConnection()){
 			// SQLを実行準備
-			String sql = "INSERT INTO growth "
-					+ " (observation_at, watering, record, plant_id, created_at) "
-					+ " VALUES( ?, ?, ?, NOW()) ";
+			String sql = "INSERT INTO growths "
+					+ " (observation_at, watering, record) "
+					+ " VALUES (NOW(), ?, ?) ";
 			var stmt = con.prepareStatement(sql);
+			
 			// ? の設定
-	        stmt.setTimestamp(1, new Timestamp(growth.getObservationAt().getTime()));
-	        stmt.setString(2, growth.getWatering());
-	        stmt.setString(3, growth.getRecord());
-	        stmt.setInt(4, growth.getPlant().getId());
+	        
+	        stmt.setString(1, growth.getWatering());
+	        stmt.setString(2, growth.getRecord());
+	     
 
 			// SQLを実行
 			stmt.executeUpdate();
