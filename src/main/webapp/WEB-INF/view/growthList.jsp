@@ -72,7 +72,8 @@
         <div class="left-bottom-info">
             
             <div class="plant-info">
-                <strong>PLANTS : </strong> 
+                <strong>PLANTS : </strong>
+                <c:out value="${plantName}" /> 
             </div>
         </div>
         <style>
@@ -92,33 +93,75 @@
                 color: rgb(87, 88, 84);
             }
         </style>
-        <form action="logout" method="post">
-        <p><a href="logout" class="btn btn-outline-secondary" disabled>登録</a></p>
-        </form>
-        <table class="table table-striped table-hover">
-            <thead>
+   <form action="logout" method="post">
+    <p><a href="logout" class="btn btn-outline-secondary" disabled>登録</a></p>
+</form>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>観察年月日</th>
+            <th>水やり頻度</th>
+            <th>生育状況</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%-- ページネーションの設定 --%>
+        <c:set var="pageSize" value="15" />
+        <c:set var="page" value="${empty param.page ? 1 : param.page}" />
+        <c:set var="start" value="${(page - 1) * pageSize}" />
+        <c:set var="end" value="${start + pageSize}" />
+
+        <%-- データの表示 --%>
+        <c:forEach var="growthList" items="${growths}" varStatus="status">
+            <c:if test="${status.index >= start && status.index < end}">
                 <tr>
-                    <th>ID</th>
-                    <th>観察年月日</th>
-                    <th>水やり頻度</th>
-                    <th>生育状況</th>
+                    <td><c:out value="${growthList.id}" /></td>
+                    <td><fmt:formatDate value="${growthList.observationAt}" pattern="yyyy-MM-dd" /></td>
+                    <td><c:out value="${growthList.watering}" /></td>
+                    <td><c:out value="${growthList.record}" /></td>
                 </tr>
-            </thead>
-            <tbody>
-                <%-- 生育の繰り返し表示 --%>
-                <c:forEach var="growthList" items="${growths}" >
-                    <tr>
-                        <td><c:out value="${growthList.id}" /></td>
-                        <td><fmt:formatDate value="${growthList.observationAt}" pattern="yyyy-MM-dd" /></td>
-                        <td><c:out value="${growthList.watering}" /></td>
-                        <td><c:out value="${growthList.record}" /></td>
+            </c:if>
+        </c:forEach>
+    </tbody>
+</table>
 
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
+<%-- ページネーションのリンク --%>
+<div class="wrapper">
+    <div class="pagination-next">
+        <c:if test="${end < growths.size()}">
+            <a href="?page=${page + 1}" class="pagination-next-link key-btn">次のページ</a>
+        </c:if>
     </div>
+    
+    <div class="pagination">
+        <%-- 現在のページを表示 --%>
+        <span aria-current="page" class="page-numbers current">${page}</span>
+
+        <%-- 2ページ目以降のリンクを表示 --%>
+        <c:forEach begin="1" end="${(growths.size() + pageSize - 1) / pageSize}" var="p">
+            <a class="page-numbers" href="?page=${p}">${p}</a>
+        </c:forEach>
+
+        <%-- 「…」の省略表示（ページ数が多い場合） --%>
+        <c:if test="${(growths.size() / pageSize) > 5}">
+            <span class="page-numbers dots">&hellip;</span>
+            <a class="page-numbers" href="?page=${(growths.size() / pageSize)}">
+                ${(growths.size() + pageSize - 1) / pageSize}
+            </a>
+        </c:if>
+
+        <%-- 「次へ」ボタン --%>
+        <c:if test="${end < growths.size()}">
+            <a class="next page-numbers" href="?page=${page + 1}">
+                <span class="screen-reader-text">次へ</span>
+                <span class="fa fa-angle-right" aria-hidden="true"></span>
+            </a>
+        </c:if>
+    </div>
+</div>
+
     <style>
 
     table th:nth-child(1), table td:nth-child(1) {

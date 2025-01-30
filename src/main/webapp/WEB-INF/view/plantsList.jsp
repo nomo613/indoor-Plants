@@ -19,8 +19,7 @@
 		</header>
 
 		<p style="font-weight: bold; color: rgb(87, 88, 84);">
-			登録ボタンを押すと植物に関する生育記録を追加できます。
-		</p>
+			登録ボタンを押すと植物に関する生育記録を追加できます。</p>
 
 
 		<%-- エラーメッセージ表示 --%>
@@ -43,18 +42,19 @@
 						style="display: flex; flex-direction: column; justify-content: space-between;">
 						<div class="d-flex align-items-center mb-2">
 
+						
 							<%-- 画像 --%>
 							<img src="<c:url value='${plant.imagePath}'/>" alt="Plant Image"
-								class="img-fluid rounded"
+								class="img-fluid rounded zoom-effect"
 								style="width: 100px; height: auto; margin-right: 15px;">
+
 
 
 							<%-- 右側のテキスト --%>
 							<div class="flex-grow-1 text-center">
 								<h2 class="card-title text-secondary">${plant.plantName}</h2>
 								<p class="card-text text-muted mb-1">
-									和名: ${plant.japaneseName}<br> 
-									学名: <em>${plant.scientificName}</em><br>  
+									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}
 								</p>
 								<p class="card-text text-secondary small mb-0">${plant.description}</p>

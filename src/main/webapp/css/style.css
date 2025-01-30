@@ -125,6 +125,13 @@ ul li {
     height: auto;
 }
 
+.img-fluid rounded{
+    border-radius: 15px;
+    width: 200px;
+    height: auto;
+}
+
+
 /* 矢印スタイル */
 .dli-chevron-down {
     margin: 30px; /* スライド*/
@@ -291,4 +298,145 @@ span {
     padding: 10px; /* 余白  */
     border-radius: 5px; /* 角丸  */
 }
+
+*{
+  box-sizing: border-box;
+}
+.wrapper{
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Noto Sans JP, sans-serif;
+}
+/*
+*　GrowthList　Cocoonのデフォルトのスタイル
+*/
+.pagination-next{
+  margin-top: 24px;
+}
+.pagination-next-link{
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  color: rgb#f9f9f9d3;;
+  display: block;
+  font-size: 1.2em;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  display: block;
+}
+.pagination-next-link:hover{
+  background-color: #f5f8fa;
+  transition: all 0.3s ease-in-out;
+  color: #f9f9f9d3;;
+}
+.pagination{
+  margin: 24px 0;
+  clear: both;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+.pagination .current{
+  background-color: #eee;
+}
+.pagination a:hover{
+  background-color: #f5f8fa;
+  transition: all 0.3s ease-in-out;
+  color: #f9f9f9d3;;
+}
+.page-numbers{
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  height: 46px;
+  width: 46px;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  line-height: 46px;
+  text-align: center;
+  border-radius: 4px;
+}
+.page-numbers span{
+  line-height: inherit;
+}
+.page-numbers.dots{
+  opacity: 0.6;
+  background-color: #f5f6f7;
+}
+.page-numbers, .pagination-next-link{
+  border-color: #e3e3e3 #cecece #b4b4b4 #d6d6d6;
+  border-width: 1px;
+  border-style: solid;
+}
+.fa{
+  display: inline-block;
+  font: normal normal normal 14px / 1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.screen-reader-text{
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+@media screen and (max-width: 480px){
+    .page-numbers{
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+    }
+    .pagination-next-link{
+        font-size: 1em;
+    }
+}
+/*
+カスタマイズ
+*/
+.pagination-next, .pagination{
+  overflow: hidden;
+}
+.pagination-next-link, .page-numbers{
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #f9f9f9d3;
+  background-color: rgb(196, 196, 196);
+}
+.page-numbers.dots{
+  border: none;
+  background-color: rgb(196, 196, 196);
+  opacity: 1;
+}
+.pagination .current{
+  background-color: #ccc;
+  color: #afa69b;
+}
+.pagination-next-link, .pagination a{
+  transition: .2s;
+}
+.pagination-next-link:hover, .pagination a:hover{
+  background-color: #afa69b;
+  color: #fff;
+  transform: translateY(5px);
+}
+
+/* plsntsList画像の拡大アニメーション */
+.zoom-effect {
+    transition: transform 0.3s ease-in-out; /* スムーズなアニメーション */
+}
+
+.zoom-effect:hover {
+    transform: scale(3.0); /* 3倍に拡大 */
+}
+
 
