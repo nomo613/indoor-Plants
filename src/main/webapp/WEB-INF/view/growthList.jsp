@@ -93,9 +93,9 @@
                 color: rgb(87, 88, 84);
             }
         </style>
-   <form action="logout" method="post">
-    <p><a href="logout" class="btn btn-outline-secondary" disabled>登録</a></p>
-</form>
+<div class="button_solid008">
+  <a href="logout">登録</a>
+</div>
 
 <table class="table table-striped table-hover">
     <thead>

@@ -440,3 +440,54 @@ span {
 }
 
 
+
+/* glowth 登録ボタンsolid008 */
+
+.button_solid008 a{
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.button_solid008 a::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  right: -7px;
+  width: 100%;
+  height: 2px;
+  background-color: #bbbbbb;
+  transition: 0.2s ease 0s;
+}
+
+.button_solid008 a::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: -7px;
+  width: 2px;
+  height: 100%;
+  background-color: #bbbbbb;
+  transition: 0.2s ease 0.2s;
+}
+
+.button_solid008 a:hover::before {
+  width: 0%;
+}
+
+.button_solid008 a:hover::after {
+  height: 0%;
+}
+
+.button_solid008 a:hover {
+  text-decoration: none;
+  background-color: #ccc;
+}
