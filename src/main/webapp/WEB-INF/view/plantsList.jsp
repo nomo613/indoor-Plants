@@ -21,62 +21,43 @@
 		<p style="font-weight: bold; color: rgb(87, 88, 84);">
 			登録ボタンを押すと植物に関する生育記録を追加できます。</p>
 
-
-		<%-- エラーメッセージ表示 --%>
-		<c:if test="${not empty error}">
-			<div class="alert alert-danger my-3" role="alert">${error}</div>
-		</c:if>
-
-		<%-- 通常メッセージ表示 --%>
-		<c:if test="${not empty sessionScope.message}">
-			<div class="alert alert-success my-3">${sessionScope.message}</div>
-			<c:remove var="message" scope="session" />
-		</c:if>
-
 		<div class="row">
-
 			<%-- 植物リストの繰り返し表示 --%>
 			<c:forEach var="plant" items="${plants}">
-				<div class="col-md-4 mb-4">
-					<div class="card h-100 p-2"
-						style="display: flex; flex-direction: column; justify-content: space-between;">
-						<div class="d-flex align-items-center mb-2">
-
-						
-							<%-- 画像 --%>
-							<img src="<c:url value='${plant.imagePath}'/>" alt="Plant Image"
-								class="img-fluid rounded zoom-effect"
-								style="width: 100px; height: auto; margin-right: 15px;">
-
-
-
-							<%-- 右側のテキスト --%>
-							<div class="flex-grow-1 text-center">
-								<h2 class="card-title text-secondary">${plant.plantName}</h2>
-								<p class="card-text text-muted mb-1">
+				<div class="col-md-3 mb-4">
+					<div class="wrapper">
+						<div class="card">
+							<img class="card-image" src="<c:url value='${plant.imagePath}'/>"
+								alt="Plant Image">
+							<div class="card-box">
+								<h2 class="card-title">${plant.plantName}</h2>
+								<p class="card-description">
 									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}
 								</p>
-								<p class="card-text text-secondary small mb-0">${plant.description}</p>
+								<div style="text-align: right;">
+									<button type="button" class="btn btn-outline-secondary"
+										onclick="location.href='growth?plantName=${plant.plantName}'">登録</button>
+								</div>
 							</div>
+							<!-- card-box 終了 -->
 						</div>
-
-						<div style="text-align: right;">
-							<button type="button" class="btn btn-outline-secondary"
-								onclick="location.href='growth?plantName=${plant.plantName}'">登録</button>
-						</div>
-
-
-
+						<!-- card 終了 -->
 					</div>
+					<!-- wrapper 終了 -->
+
 				</div>
+				<!-- col-md-3 mb-4 終了 -->
 			</c:forEach>
 		</div>
+		<!-- row 終了 -->
 	</div>
+	<!-- container 終了 -->
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
 
 
