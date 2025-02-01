@@ -60,7 +60,7 @@ h1 {
 
 h2 {
     font-weight: bold;
-    color: rgb(115, 141, 100);
+    color: rgb(97, 98, 89);
     font-size: 25px;
     margin: 40px 0 30px;
 }
@@ -83,7 +83,7 @@ h4 {
 
 h5 {
     font-weight: bold;
-    color: #5e6461;
+    color: rgb(56, 57, 49);
     width: 200px;
     font-size: 20px;
 }
@@ -92,21 +92,22 @@ h6 {
     font-size: 30px;
     font-weight: normal;
     padding-top: 80px;
-    color: rgb(32, 32, 32); /* ドロップシャドウ */
+    color: rgb(97, 98, 89); /* ドロップシャドウ */
     text-shadow: 3px 3px 5px rgba(14, 51, 29, 0.5)
 }
 
 p {
     font-weight: bold;
-    color: rgb(128, 125, 122);
+    font-size: 20px;
+    color: rgb(91, 88, 83);
     margin: 10px 0;
   }
 
 ul li {
     list-style-type: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: normal;
-    color: rgb(138, 133, 127);
+    color: rgb(126, 121, 114);
 }
 
 /* レイアウト */
@@ -156,21 +157,21 @@ ul li {
     background: rgb(225, 226, 226); /* 円の背景色 */
     margin: 0px; /* 間隔 */
     line-height: 190px; /* 文字の位置 */
-    font-family: 'M PLUS Rounded 1c', sans-serif;/* フォント */
+    font-family: 'Cormorant Garamond', serif;
     border: none;
     text-decoration: none;  /* 罫線を消す */
     text-align: center; /* 文字をセンターに */
     justify-content: center; /* 横方向の中央揃え */
     align-items: center; /* 縦方向の中央揃え */
-    color: rgb(101, 110, 85); /* 文字色 */
+    color: rgb(66, 72, 55); /* 文字色 */
     font-weight: bold; /* 文字の太さ */
     font-size: 25px; /* フォントサイズ */
     
   animation: blinkAnime 1s infinite alternate;
 }
 @keyframes blinkAnime{
-   0% { color: rgba(80, 81, 9, 0.91) }
- 100% { color: rgba(168, 193, 120, 0.91) }
+   0% { color: rgb(101, 87, 61) }
+ 100% { color: rgb(179, 166, 145) }
 }
 
 .col {
@@ -189,8 +190,8 @@ dd {
     font-weight: 0;
     padding-top: 20px;
     padding-bottom: 0;
-    font-size: 15px;
-    color: rgb(143, 138, 131);
+    font-size: 20px;
+    color: rgb(114, 109, 103);
 }
 
 .img-fluid {
