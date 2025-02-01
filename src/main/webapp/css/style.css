@@ -5,9 +5,10 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
 
 body {
-    background-color: rgb(164, 187, 177);
+    background-color: rgb(202, 206, 205);
     text-align: center;
-    font-family:'Lato','M PLUS Rounded 1c', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
+    
 }
 
 .breadcrumb {
@@ -15,7 +16,7 @@ body {
     font-size: 1rem; /* フォントサイズ */
     margin-top: 2rem;
     padding: 0.5rem 4rem; /* 内側の余白 */
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 
 .breadcrumb-item a {
@@ -31,7 +32,7 @@ main {
     background: #dde0e2dc;
     margin-bottom: 30px;
     padding: 10px;
-    font-family:'Lato','M PLUS Rounded 1c', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 main.container {
@@ -305,7 +306,7 @@ span {
 .wrapper{
   margin: 0 auto;
   padding: 20px;
-  font-family: Noto Sans JP, sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 /*
 *　GrowthList　Cocoonのデフォルトのスタイル

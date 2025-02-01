@@ -11,6 +11,7 @@
     <title>Indoor Plants</title>
 </head>
 <body>
+
    <header>
      <div class="text-center py-3">
       <h1>INDOOR PLANTS</h1>
