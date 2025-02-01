@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Plant {
     private Integer id;
-    private String plantNumber;
+    private String plantCpl;
     private String plantName;
     private String japaneseName;
     private String scientificName;
@@ -20,8 +20,8 @@ public class Plant {
 
     // 簡易的なコンストラクター
     // 必要に応じてデフォルトコンストラクタを追加
-    public Plant(int id, String plantName, String description, String plantNumber,String japaneseName, String scientificName, String genusName, String imagePath) {
-        this.plantNumber = plantNumber;
+    public Plant(int id, String plantName, String description, String plantCpl,String japaneseName, String scientificName, String genusName, String imagePath) {
+        this.plantCpl = plantCpl;
         this.plantName = plantName;
         this.japaneseName = japaneseName;
         this.scientificName = scientificName;
