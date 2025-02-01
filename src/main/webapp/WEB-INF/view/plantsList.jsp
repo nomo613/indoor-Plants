@@ -31,7 +31,7 @@
 								alt="Plant Image">
 							<div class="card-box">
 								<h2 class="card-title">${plant.plantName}</h2>
-								<p class="card-description">
+								<p class="card-description" style=font-size:13px>
 									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}
 								</p>
