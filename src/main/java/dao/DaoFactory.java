@@ -27,9 +27,7 @@ public class DaoFactory {
 		return new MemberDaoImpl(getDataSource());
 	}
 	
-	public static RegisteredPlantsDao createRegisteredPlantsDao() {
-		return new RegisteredPlantsDaoImpl(getDataSource());
-	}
+	
 
 	private static DataSource getDataSource() {
 		InitialContext ctx = null;
