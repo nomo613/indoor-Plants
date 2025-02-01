@@ -12,9 +12,9 @@
     <title>生育記録の登録</title>
     <style>
         body {
-            background-color: rgb(164, 187, 177);
+            background-color: rgb(202, 206, 205);
             text-align: center;
-            font-family: 'Lato', 'M PLUS Rounded 1c', sans-serif;
+             font-family: 'Cormorant Garamond', serif;
             margin: 0;
             padding: 0;
             background-image: url('images/.jpg'); /* 背景画像のパス */
