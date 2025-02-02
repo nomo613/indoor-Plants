@@ -277,10 +277,13 @@ span {
     border-radius: 10px; /* 角を丸める */
     font-size: 14px; /* フォントサイズを小さくする */
 }
+
+/* plantsList */
 .card img {
     max-height: 500px; /* 画像の高さを制限 */
     object-fit: cover; /* 画像を枠内に収める */
     border-radius: 8px; /* 画像の角も丸める */
+    margin-bottom: 20px;
 }
 /*.card h5 {
     font-size: 16px; /* タイトルを小さくする 
@@ -301,17 +304,8 @@ span {
     border-radius: 5px; /* 角丸  */
 }
 
-*{
-  box-sizing: border-box;
-}
-.wrapper{
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Cormorant Garamond', serif;
-}
-/*
-*　GrowthList　Cocoonのデフォルトのスタイル
-*/
+
+/*GrowthList　Cocoonのデフォルトのスタイル*/
 .pagination-next{
   margin-top: 24px;
 }
@@ -508,7 +502,7 @@ span {
   display: inline-block;
   font-weight: bold;
   padding: 12px 0 8px;
-  margin: 20px;
+  margin: 10px;
   text-decoration: none;
   color: rgb(82, 58, 50);
   transition: .4s;
@@ -580,9 +574,23 @@ span {
   left: 100%;
   border-radius: 3px;
    background:rgb(189, 183, 168);
-}
+}s
 
 .btn-vertical-border:hover:before, .btn-vertical-border:hover:after {
   -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
+}
+
+/* PlantsList PlantName */
+.card-title {
+    text-decoration: none; /* 下線を削除 */
+    color: rgb(97, 98, 89);
+    font-size: 25px;
+    margin: 40px 0 30px; 
+    padding-top: 20px;
+}
+/* PlantsList */
+.wrapper{
+  margin: 0 auto;
+  padding: 10px;
 }

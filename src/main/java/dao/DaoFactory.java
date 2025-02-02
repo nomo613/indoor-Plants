@@ -27,6 +27,10 @@ public class DaoFactory {
 		return new MemberDaoImpl(getDataSource());
 	}
 	
+	public static PlantsDetailDao createPlantsDetailDao() {
+		return new PlantsDetailDaoImpl(getDataSource());
+	}
+	
 	
 
 	private static DataSource getDataSource() {

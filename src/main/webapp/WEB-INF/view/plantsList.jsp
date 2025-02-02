@@ -19,7 +19,8 @@
 		</header>
 
 		<p style="font-weight: bold; color: rgb(87, 88, 84);">
-			登録ボタンを押すと植物に関する生育記録を追加できます。</p>
+		    植物名から詳細を表示します。<br>
+			登録すると植物に関する生育記録を追加できます。</p>
 
 		<div class="row">
 			<%-- 植物リストの繰り返し表示 --%>
@@ -30,7 +31,7 @@
 							<img class="card-image" src="<c:url value='${plant.imagePath}'/>"
 								alt="Plant Image">
 							<div class="card-box">
-								<h2 class="card-title">${plant.plantName}</h2>
+								<a href="" class="card-title">${plant.plantName}</a>
 								<p class="card-description" style=font-size:13px>
 									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}
