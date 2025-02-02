@@ -95,11 +95,10 @@ header .content div {
 					placeholder="例: 良好/葉が弱ってる"></textarea>
 			</p>
 
-			<!--   <p class="align-right">
+	        <p class="align-right">
 				<button type="submit" class="btn btn-outline-secondary">本日の登録</button>
-			</p> -->
-			<div class="button_solid008"><a href="growthList">本日の登録</a>
-</div>
+			</p> 
+		
 		</form>
 </body>
 <script src="js/jquery-2.1.4.min.js"></script>
