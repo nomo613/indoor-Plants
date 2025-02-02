@@ -35,10 +35,8 @@
 									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}
 								</p>
-								<div style="text-align: right;">
-									<button type="button" class="btn btn-outline-secondary"
-										onclick="location.href='growth?plantName=${plant.plantName}'">登録</button>
-								</div>
+								 <a onclick="location.href='growth?plantName=${plant.plantName}'" class="btn-horizontal-border">登録</a>
+								<!--  <a onclick="location.href='growth?plantName=${plant.plantName}'" class="btn-vertical-border">登録</a> -->
 							</div>
 							<!-- card-box 終了 -->
 						</div>
