@@ -21,16 +21,16 @@ public class PlantsDetailServlet extends HttpServlet {
 		try {
 			// 植物詳細を取得
 			PlantsDetailDao dao = DaoFactory.createPlantsDetailDao();
-			req.setAttribute("detail", dao.selectAll());
+			req.setAttribute("plants", dao.selectAll());
 			System.out.println(dao.selectAll());
 
 			// フォワードでリスト表示
-			req.getRequestDispatcher("/WEB-INF/view/plantsdetail.jsp")
+			req.getRequestDispatcher("/WEB-INF/view/plantsDetail.jsp")
 					.forward(req, resp);
 
 		} catch (Exception e) {
 			// 例外発生時にログを記録
-			log("Error fetching detail list", e);
+			log("Error fetching plant list", e);
 			throw new ServletException(e);
 
 		}
