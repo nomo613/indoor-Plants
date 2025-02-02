@@ -72,7 +72,7 @@ public class PlantsListDaoImpl implements PlantsListDao {
 				   + " p.id, p.plant_cpl, p.plant_name, "
 				   + " g.id, g.observation_at, "
 				   + " g.watering, g.record  "
-				   + " FROM plants As pgrowths "
+				   + " FROM plants As p "
 				   + " JOIN growths As g "
 				   + " ON  p.plant_cpl = g.plant_cpl ";
 

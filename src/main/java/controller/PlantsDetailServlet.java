@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.DaoFactory;
 import dao.PlantsDetailDao;
+import dto.Plant;
 
 @WebServlet("/plantsDetail")
 public class PlantsDetailServlet extends HttpServlet {
@@ -19,21 +22,22 @@ public class PlantsDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			// 植物詳細を取得
-			PlantsDetailDao dao = DaoFactory.createPlantsDetailDao();
-			req.setAttribute("plants", dao.selectAll());
-			System.out.println(dao.selectAll());
-
-			// フォワードでリスト表示
-			req.getRequestDispatcher("/WEB-INF/view/plantsDetail.jsp")
-					.forward(req, resp);
-
-		} catch (Exception e) {
-			// 例外発生時にログを記録
-			log("Error fetching plant list", e);
-			throw new ServletException(e);
-
-		}
-
-	}
+            String plantIdStr = req.getParameter("id"); // URLパラメータの取得
+            if (plantIdStr != null && !plantIdStr.isEmpty()) {
+                int plantId = Integer.parseInt(plantIdStr);
+                PlantsDetailDao dao = DaoFactory.createPlantsDetailDao();
+                Plant plant = dao.selectById(plantId);
+                
+                if (plant != null) {
+                    req.setAttribute("plants", List.of(plant)); // リスト化
+                } else {
+                    req.setAttribute("plants", new ArrayList<>()); // 空リスト
+                }
+            }
+            req.getRequestDispatcher("/WEB-INF/view/plantsDetail.jsp").forward(req, resp);
+        } catch (Exception e) {
+            log("Error fetching plant details", e);
+            throw new ServletException(e);
+        }
+    }
 }

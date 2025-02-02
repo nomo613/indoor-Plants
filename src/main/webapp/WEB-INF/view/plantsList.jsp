@@ -31,7 +31,7 @@
 							<img class="card-image" src="<c:url value='${plant.imagePath}'/>"
 								alt="Plant Image">
 							<div class="card-box">
-								<a href="plantsDetail" class="card-title">${plant.plantName}</a>
+								<a href="plantsDetail?id=${plant.id}" class="card-title">${plant.plantName}</a>
 								<p class="card-description" style=font-size:13px>
 									和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
 									属名: ${plant.genusName}

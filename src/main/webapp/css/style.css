@@ -262,20 +262,15 @@ span {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
 }
 
+/* plantsDetail */
 .card {
-    margin: 50px auto; /* 上下にマージンを追加 */
-    max-width: 600px; /* 幅を調整 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加して見栄えを向上 */
-    border-radius: 10px; /* 角を丸める */
-}
-
-.card {
-    max-width: 500px; /* カードの幅を小さくする */
+    max-width: 1000px; /* カードの幅を小さくする */
     margin: 20px auto; /* カードを中央に配置 */
     padding: 10px; /* カード内の余白を小さくする */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
     border-radius: 10px; /* 角を丸める */
     font-size: 14px; /* フォントサイズを小さくする */
+     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* 影を追加 */
 }
 
 /* plantsList */

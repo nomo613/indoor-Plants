@@ -34,18 +34,7 @@ public class PlantsListServlet extends HttpServlet {
         }
     }
 
-    	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-    			throws ServletException, IOException {
-    		
-    		req.getRequestDispatcher("/WEB-INF/view/plsntsDetail.jsp")
-					.forward(req, resp);
-    		
-    		}
-    	}
-    
-
-
-
+}	
 
 
 

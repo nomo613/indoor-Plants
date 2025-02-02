@@ -14,17 +14,72 @@
 </head>
 <body>
 
-	<div class="row">
-		<%-- 植物リストの繰り返し表示 --%>
+	<div class="container mt-5">
 		<c:forEach var="plant" items="${plants}">
+			<div class="card mb-3">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img class="card-image" src="<c:url value='${plant.imagePath}'/>"
+							class="img-fluid rounded-start" alt="${plant.plantName}">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h2 class="card-title">${plant.plantName}</h2>
 
-			<h2 class="card-title">${plant.plantName}</h2>
-			<p class="card-description" style="font-size: 13px">
-				和名: ${plant.japaneseName}<br> 学名: <em>${plant.scientificName}</em><br>
-				属名: ${plant.genusName}<br>特徴: ${plant.description}
-			</p>
-	</c:forEach>
+							<p class="card-text">
+								<style>
+.card-title {
+	font-size: 50px;
+	position: relative;
+	margin-bottom: 0.2rem;
+	padding: 1rem 0;
+	border-bottom: 5px solid;
+	color: rgb(97, 98, 89);
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.card-title:before {
+	position: absolute;
+	bottom: -0.6rem;
+	left: 0rem;
+	right: 0rem;
+	border-bottom: 1px solid;
+	content: '';
+	color: rgb(97, 98, 89);
+}
+
+.plant-info {
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+</style>
+							<div class="plant-info" style=margin-top:50px>
+								<strong>和名:</strong> ${plant.japaneseName}
+							</div>
+
+							<div class="plant-info">
+								<strong>学名:</strong> <em>${plant.scientificName}</em>
+							</div>
+
+							<div class="plant-info">
+								<strong>属名:</strong> ${plant.genusName}
+							</div>
+
+							<div class="plant-info" style=margin-top:40px>
+								<strong>特徴<br></strong> ${plant.description}
+							</div>
+
+							</p>
+                        <a onclick="location.href='plantsList?plantName=${plant.plantName}'"
+                                    class="btn-vertical-border"style=margin-top:40px>PLANTSLISTへ戻る</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
+
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

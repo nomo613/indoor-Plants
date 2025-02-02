@@ -45,56 +45,46 @@ public class PlantsDetailDaoImpl implements PlantsDetailDao {
 		return new Plant(id, plantCpl, plantName, japaneseName, scientificName, genusName, description, imagePath);
 	}
 
-	@Override
-	public Plant selectById(int id) throws Exception {
-		Plant plant = null;
-		try (Connection con = ds.getConnection()) {
-			// SQLを実行準備
-			String sql = createSelectClauseWithJoin()
-					+ " WHERE p.id = ?";
-			var stmt = con.prepareStatement(sql);
-			stmt.setInt(1, id);
 
-			// SQLを実行
-			ResultSet rs = stmt.executeQuery();
-
-			// ResultSet ⇒　Plantに変換
-			if (rs.next()) {
-				plant = mapToPlant(rs);
-			}
-
-		}
-		return plant;
-	}
 
 	private String createSelectClauseWithJoin() {
 		return "SELECT "
-				+ " p.id, p.plant_cpl, p.plant_name, "
-				+ " g.id, g.observation_at, "
+				+ " + p.id, p.plant_cpl, p.plant_name, p.japanese_name, p.scientific_name, p.genus_name, p.description, p.image_path, "
+				+ " + g.id AS growth_id, g.observation_at, "
 				+ " g.watering, g.record  "
-				+ " FROM plants As pgrowths "
-				+ " JOIN growths As g "
+				+ " FROM plants As p "
+				+ " LEFT JOIN growths As g "
 				+ " ON  p.plant_cpl = g.plant_cpl ";
 
+	}
+	
+	@Override
+	public Plant selectById(int id) throws Exception {
+	    return selectByCondition("p.id", id);
 	}
 
 	@Override
 	public Plant selectById(String plantName) throws Exception {
-		Plant plant = null;
-		try (Connection con = ds.getConnection()) {
-			// SQLを実行準備
-			String sql = createSelectClauseWithJoin() + "WHERE p.plant_name = ?";
-			var stmt = con.prepareStatement(sql);
-			stmt.setString(1, plantName);
-			// SQLを実行
-			ResultSet rs = stmt.executeQuery();
-			// ResultSet ⇒ Playerに変換
-			if (rs.next()) {
-				plant = mapToPlant(rs);
-			}
+	    return selectByCondition("p.plant_name", plantName);
+	}
 
-		}
-
-		return plant;
+	private Plant selectByCondition(String column, Object value) throws Exception {
+	    Plant plant = null;
+	    try (Connection con = ds.getConnection()) {
+	        String sql = createSelectClauseWithJoin() + " WHERE " + column + " = ?";
+	        var stmt = con.prepareStatement(sql);
+	        
+	        if (value instanceof Integer) {
+	            stmt.setInt(1, (Integer) value);
+	        } else {
+	            stmt.setString(1, value.toString());
+	        }
+	        
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            plant = mapToPlant(rs);
+	        }
+	    }
+	    return plant;
 	}
 }
