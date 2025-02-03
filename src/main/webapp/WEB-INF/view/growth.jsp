@@ -73,7 +73,7 @@ header .content div {
 	<div class="form-container">
 		<h2 class="text-center">生育記録の登録</h2>
 
-		<form action="growthList" method="post">
+		<form action="growth" method="post">
 			<p>
 				観察日: <input type="date" name="observationAt" class="form-control">
 			</p>
@@ -96,7 +96,7 @@ header .content div {
 			</p>
 
 	        <p class="align-right">
-				<button type="submit" class="btn btn-outline-secondary">本日の登録</button>
+				<button type="submit" class="btn btn-outline-secondary">登録</button>
 			</p> 
 		
 		</form>

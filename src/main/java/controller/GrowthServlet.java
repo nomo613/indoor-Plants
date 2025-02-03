@@ -48,22 +48,22 @@ public class GrowthServlet extends HttpServlet {
 		boolean isValid = true;
 		
 		if (observation.isBlank()) {
-			System.out.println("年月日が不正");
+			System.out.println("観察年月日が入力されてません。");
 			isValid = false;
 		}
 
 		if (watering.isBlank() || watering.length() > 30) {
-			System.out.println("水やり回数不正");
+			System.out.println("水やり回数が入力されてません。");
 			isValid = false;
 
 		}
 		if (record.isBlank() || record.length() > 500) {
-			System.out.println("入力不正");
+			System.out.println("入力されてません。");
 			isValid = false;
 		}
 
 		if (!isValid) {
-			// フォームを再表示
+			// 入力エラーがある場合、フォームを再表示
 			req.getRequestDispatcher("/WEB-INF/view/growth.jsp")
 					.forward(req, resp);
 			return;
@@ -75,10 +75,9 @@ public class GrowthServlet extends HttpServlet {
 		//DBに保存
 		save(observationAt, watering, record);
 
-		// 一覧ページにリダイレクト
+		// 成功時はGrowListへリダイレクト
 	    resp.sendRedirect("growthList");
 	}
-
 
 
 	// 情報をDBに保存するメソッド
@@ -93,14 +92,15 @@ public class GrowthServlet extends HttpServlet {
 				// SQLを実行する
 				String sql = "INSERT INTO growths " 
 						+ " (observation_at,watering,record) " 
-						+ " VALUES (NOW(), ?, ?) "; 
+						+ " VALUES (?, ?, ?) "; 
 
-				// 1. SQLを実行準備状態にする
-				var stmt = con.prepareStatement(sql);		
-				stmt.setString(1, watering);
-				stmt.setString(2, record);
+				// SQLを実行準備状態にする
+				var stmt = con.prepareStatement(sql);
+				stmt.setDate(1, new java.sql.Date(observation.getTime()));
+				stmt.setString(2, watering);
+				stmt.setString(3, record);
 				
-				// 2. SQLを実行
+				// SQLを実行
 				stmt.executeUpdate();
 
 			}
