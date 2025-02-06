@@ -34,9 +34,9 @@ public class PlantsDetailDaoImpl implements PlantsDetailDao {
 	}
 
 	private Plant mapToPlant(ResultSet rs) throws SQLException {
-		Integer id = (Integer) rs.getObject("id");
-		String plantCpl = rs.getString("plant_cpl");
-		String plantName = rs.getString("plant_name");
+		 Integer id = (Integer) rs.getObject("id");
+		 String plantCpl = rs.getString("plant_cpl");
+		 String plantName = rs.getString("plant_name");
 		String japaneseName = rs.getString("japanese_name");
 		String scientificName = rs.getString("scientific_name");
 		String genusName = rs.getString("genus_name");

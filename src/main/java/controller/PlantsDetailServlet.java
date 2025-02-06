@@ -19,10 +19,10 @@ public class PlantsDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		try {
+	 try {
             String plantIdStr = req.getParameter("id"); // URLパラメータの取得
             if (plantIdStr != null && !plantIdStr.isEmpty()) {
                 int plantId = Integer.parseInt(plantIdStr);
@@ -38,7 +38,7 @@ public class PlantsDetailServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/view/plantsDetail.jsp").forward(req, resp);
         } catch (Exception e) {
             log("Error fetching plant details", e);
-            throw new ServletException(e);
+             throw new ServletException(e);
         }
     }
 }

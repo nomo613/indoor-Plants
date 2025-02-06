@@ -37,7 +37,7 @@ public class DaoFactory {
 		InitialContext ctx = null;
 		DataSource ds = null;
 		try {
-			ctx = new InitialContext();
+			 ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/indoor_plsnts_db");
 		} catch (NamingException e) {
 			if (ctx != null) {

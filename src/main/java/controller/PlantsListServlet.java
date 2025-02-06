@@ -20,9 +20,9 @@ public class PlantsListServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             // 植物リストを取得
-            PlantsListDao dao = DaoFactory.createPlantsListDao();
-            req.setAttribute("plants", dao.selectAll());
-            System.out.println(dao.selectAll());
+             PlantsListDao dao = DaoFactory.createPlantsListDao();
+             req.setAttribute("plants", dao.selectAll());
+             System.out.println(dao.selectAll());
 
             // フォワードでリスト表示
             req.getRequestDispatcher("/WEB-INF/view/plantsList.jsp")
